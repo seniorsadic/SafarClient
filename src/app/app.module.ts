@@ -27,6 +27,9 @@ import { EditProduitComponent } from './produits/edit-produit/edit-produit.compo
 import {ProduitService} from "../services/produit.service";
 import { ReportingComponent } from './reporting/reporting.component';
 import {ChartsModule} from "ng2-charts";
+import { FileUploadModule } from 'ng2-file-upload';
+import { DepotComponent } from './reporting/depot/depot.component';
+import { RapportComponent } from './reporting/rapport/rapport.component';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -46,6 +49,8 @@ const appRoutes: Routes = [
   { path: 'new-produit', component: NewComponent},
   { path: 'edit-produit/:id', component: EditProduitComponent},
   { path: 'reporting', component: ReportingComponent},
+  { path: 'depot', component: DepotComponent},
+  { path: 'rapport', component: RapportComponent},
   {path: '', redirectTo: '/about', pathMatch: 'full'}
   ];
 
@@ -71,10 +76,13 @@ const appRoutes: Routes = [
     NewCategorieComponent,
     EditCategorieComponent,
     EditProduitComponent,
-    ReportingComponent
+    ReportingComponent,
+    DepotComponent,
+    RapportComponent,
+
   ],
   imports: [
-    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule
+    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule
   ],
   providers: [ContactsService,AgenceService,VilleService,ProduitService],
   bootstrap: [AppComponent]

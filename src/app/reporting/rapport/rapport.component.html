@@ -1,0 +1,49 @@
+<div class="row">
+  <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/reporting">Overview <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/depot">Depot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/rapport">Rapport</a>
+      </li>
+    </ul>
+  </nav>
+
+  <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
+    <h1>Reporting</h1>
+
+
+      <div class="col-md-6">
+
+        <canvas baseChart
+                [data]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div class="col-md-6">
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
+        <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
+      </div>
+
+  </main>
+</div>
+
+
+
+
+
+
