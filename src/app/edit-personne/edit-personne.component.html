@@ -1,0 +1,76 @@
+<div class="container spacer">
+  <div class="panel panel-primary " *ngIf="mode==1">
+    <div class="panel-heading"> Nouvelle Personne</div>
+    <div class="panel-body">
+
+
+
+      <div >
+        <div class="form-group">
+          <label class="control-label"> Numéro:</label>
+          <input class="form-control" type="text" [(ngModel)]="personne.numero">
+        </div>
+        <div class="form-group">
+          <label class="control-label"> Prénoms:</label>
+          <input class="form-control" type="text" [(ngModel)]="personne.prenoms">
+        </div>
+        <div class="form-group">
+          <label class="control-label"> Nom:</label>
+          <input class="form-control" type="text" [(ngModel)]="personne.nom">
+        </div>
+        <div class="form-group">
+          <label class="control-label"> Agence:</label>
+          <select class="control-label" name="repeatSelect1" id="repeatSelect1" [(ngModel)]="personne.idagence">
+            <option class="control-label"
+                    *ngFor="let p of pageAgence" value="{{p.idagence}}" >{{p.designation}}</option>
+          </select>
+
+        </div>
+
+        <button class="btn btn-primary" (click)="updatePersonne()">Save</button>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div class="panel panel-primary " *ngIf="mode==2">
+    <div class="panel-heading"> Confirmation</div>
+    <div class="panel-body">
+
+      <div >
+        <div class="form-group">
+          <label class="control-label"> Id:</label>
+          <label>{{personne.iduser}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label"> Numéro:</label>
+          <label>{{personne.numero}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label"> Prénoms:</label>
+          <label>{{personne.prenoms}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label"> Nom:</label>
+          <label>{{personne.nom}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label"> Agence:</label>
+          <!-- <input class="form-control" type="text" [(ngModel)]="personne.idagence">-->
+          <select class="control-label" name="repeatSelect" id="repeatSelect" [(ngModel)]="personne.idagence">
+            <option class="control-label"
+                    *ngFor="let p of pageAgence" value="{{p.idagence}}">{{p.designation}}</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" (click)="mode=1">Nouvelle Personne</button>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

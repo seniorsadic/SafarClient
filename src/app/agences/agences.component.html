@@ -1,0 +1,64 @@
+<div class="row">
+
+  <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/new-agence">Ajouter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Analytics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Export</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
+
+
+    <h1>Liste des agences</h1>
+
+    <div class="table-responsive">
+
+
+          <table  class="table table-striped">
+            <thead>
+            <tr>
+              <th>Agence</th> <th>Ville</th>
+            </tr>
+            </thead>
+            <tr *ngFor="let a of pageAgence">
+              <td>{{a.designation}} </td>
+              <td>{{a.idville.designation}} </td>
+              <td>
+                <a (click)="onEditAagence(a.idagence)" class="clickable"> Modifier</a>
+              </td>
+              <td>
+                <a (click)="onDeleteAgence(a)" class="clickable"> Supprimer</a>
+              </td>
+            </tr>
+          </table>
+
+          <div class="container">
+            <ul class="nav nav-pills">
+              <li [ngClass]="{'active':i==page}" *ngFor=" let p of pages;let i=index">
+                <a class="clickable" (click)="gotoPages(i)">{{i}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+  </main>
+</div>
+
+
+
+
+
+

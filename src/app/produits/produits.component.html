@@ -1,0 +1,74 @@
+<div class="row">
+
+  <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/new-produit">Ajouter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/produit">Lister</a>
+      </li>
+    </ul>
+
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/categorie">Liste Categorie</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/new-categorie">Nouvelle Catégorie</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
+
+
+    <h1 class="text-center">Liste des produits</h1>
+
+    <div class="table-responsive">
+
+
+      <table  class="table table-striped">
+        <thead>
+        <tr>
+          <th>Categorie</th><th>Désignation</th> <th>Quantité</th><th>prix</th><th>Agence</th>
+        </tr>
+        </thead>
+        <tr *ngFor="let a of pageProduit">
+
+          <td>{{a.idcategorie.designation}} </td>
+          <td>{{a.designation}} </td>
+          <td>{{a.quantite}} </td>
+          <td>{{a.prix}} </td>
+          <td>{{a.idagence.designation}} </td>
+          <td>
+            <a (click)="onEditProduit(a.idproduit)" class="clickable"> Modifier</a>
+          </td>
+          <td>
+            <a (click)="onDeleteProduit(a)" class="clickable"> Supprimer</a>
+          </td>
+        </tr>
+      </table>
+
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':i==page}" *ngFor=" let p of pages;let i=index">
+            <a class="clickable" (click)="gotoPages(i)">{{i}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+  </main>
+</div>
+
+
+
+
+
+
