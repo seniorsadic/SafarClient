@@ -46,4 +46,9 @@ getContacts( motCle: String, page: Number, size: Number) {
       .map(resp => resp.json());
   }
 
+  deletePersonnel(id:number) {
+    return this.http.delete("http://localhost/Safar18/web/app_dev.php/utilisateur/"+id)
+      .map(resp => resp.json());
+  }
+
 }

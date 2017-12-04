@@ -18,6 +18,13 @@ export class EditProduitComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.produitService.getProduit(this.idProduit)
+      .subscribe(data=>{
+          this.produit=data},
+        err=>{console.log(err);
+        }
+      )
+
     this.getAgences();
     this.getCategories()
   }
@@ -47,7 +54,7 @@ export class EditProduitComponent implements OnInit {
       .subscribe(data=>{
         console.log(data);
         alert("mise à jour effectuée");
-        this.router.navigate(["agence"])
+        this.router.navigate(["produit"])
       },err=>{
         console.log(err);
         alert("Probléme");

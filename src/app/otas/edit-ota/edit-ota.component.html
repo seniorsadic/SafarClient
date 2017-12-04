@@ -5,26 +5,20 @@
         <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/new-produit">Ajouter</a>
+        <a class="nav-link" routerLink="/new-ota">Ajouter</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/produit">Lister</a>
-      </li>
-    </ul>
-
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/categorie">Liste Categorie</a>
+        <a class="nav-link" href="#">Analytics</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/new-categorie">Nouvelle Catégorie</a>
+        <a class="nav-link" href="#">Export</a>
       </li>
     </ul>
   </nav>
 
   <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
 
-    <h1 class="text-center">Nouveau Categorie</h1>
+    <h1>Nouvel Ota</h1>
 
     <div class="container spacer">
       <div  *ngIf="mode==1">
@@ -32,15 +26,19 @@
         <div >
           <div class="form-group">
             <label class="control-label"> Désignation:</label>
-            <input class="form-control" type="text" [(ngModel)]="categorie.designation">
+            <input class="form-control" type="text" [(ngModel)]="ota.designation">
+          </div>
+          <div class="form-group">
+            <label class="control-label"> Code:</label>
+            <input class="form-control" type="text" [(ngModel)]="ota.code">
           </div>
 
         </div>
-        </div>
-
-        <button class="btn btn-primary" (click)="updateCategorie()">Save</button>
 
 
+        <button class="btn btn-primary" (click)="updateOta()">Save</button>
+
+      </div>
 
 
     </div>
@@ -50,16 +48,19 @@
       <div >
         <div class="form-group">
           <label class="control-label"> Id:</label>
-          <label>{{categorie.idcategorie}}</label>
+          <label>{{ota.idoperateur}}</label>
         </div>
 
         <div class="form-group">
-          <label class="control-label"> Agence:</label>
-          <label>{{categorie.designation}}</label>
+          <label class="control-label"> Opérateur:</label>
+          <label>{{ota.designation}}</label>
         </div>
 
-
-        <button class="btn btn-primary" (click)="mode=1">Nouveau Categorie</button>
+        <div class="form-group">
+          <label class="control-label"> Code:</label>
+          <label>{{ota.code}}</label>
+        </div>
+        <button class="btn btn-primary" (click)="mode=1">Nouvel Ota</button>
 
       </div>
 

@@ -54,10 +54,10 @@ pages: any;
 
   }
 
-  onDeletePersonne(p:Personne){
+  onDeletePersonnel(p:Personne){
     let confirm=window.confirm("est vous sure?");
     if(confirm==true){
-      this.contactservice.deletePersonne(p.iduser)
+      this.contactservice.deletePersonnel(p.iduser)
         .subscribe(data=>{
           this.pagePerosonne.content.splice(
             this.pagePerosonne.content.indexOf(p),1

@@ -30,6 +30,11 @@ import {ChartsModule} from "ng2-charts";
 import { FileUploadModule } from 'ng2-file-upload';
 import { DepotComponent } from './reporting/depot/depot.component';
 import { RapportComponent } from './reporting/rapport/rapport.component';
+import { VenteComponent } from './vente/vente.component';
+import { OtasComponent } from './otas/otas.component';
+import { EditOtaComponent } from './otas/edit-ota/edit-ota.component';
+import { NewOtaComponent } from './otas/new-ota/new-ota.component';
+import {OtaService} from "../services/ota.service";
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -51,6 +56,9 @@ const appRoutes: Routes = [
   { path: 'reporting', component: ReportingComponent},
   { path: 'depot', component: DepotComponent},
   { path: 'rapport', component: RapportComponent},
+  { path: 'ota', component: OtasComponent},
+  { path: 'edit-ota/:id', component: EditOtaComponent},
+  { path: 'new-ota', component: NewOtaComponent},
   {path: '', redirectTo: '/about', pathMatch: 'full'}
   ];
 
@@ -79,12 +87,16 @@ const appRoutes: Routes = [
     ReportingComponent,
     DepotComponent,
     RapportComponent,
+    VenteComponent,
+    OtasComponent,
+    EditOtaComponent,
+    NewOtaComponent,
 
   ],
   imports: [
     BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule
   ],
-  providers: [ContactsService,AgenceService,VilleService,ProduitService],
+  providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,80 @@
+<div class="row">
+
+  <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/new-ota">Ajouter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Analytics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Export</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
+
+
+    <h1>Nouvelle Ota</h1>
+
+    <div class="container spacer">
+      <div *ngIf="mode==1">
+
+        <div >
+
+          <div class="form-group">
+            <label class="control-label"> Designation:</label>
+            <input class="form-control" type="text" [(ngModel)]="ota.designation">
+          </div>
+          <div class="form-group">
+            <label class="control-label"> Code:</label>
+            <input class="form-control" type="text" [(ngModel)]="ota.code">
+          </div>
+
+
+          <button class="btn btn-primary" (click)="saveOta()">Save</button>
+
+        </div>
+
+      </div>
+
+      <div  *ngIf="mode==2">
+        <div >
+          <div class="form-group">
+            <label class="control-label"> Id:</label>
+            <label>{{ota.idoperateur}}</label>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Désignation:</label>
+            <label>{{ota.designation}}</label>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label"> Code:</label>
+            <label>{{ota.code}}</label>
+          </div>
+
+          <button class="btn btn-primary" (click)="mode=1">Nouvel Ota</button>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+
+
+
+
+
+
+
