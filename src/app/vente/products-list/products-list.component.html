@@ -1,0 +1,8 @@
+<div  style="display: block;"   class="ui items l-flex--column resource-row-link">
+  <app-products-row
+    *ngFor="let myProduct of productsList"
+    [product]="myProduct"
+    (click)='clicked(myProduct)'
+    [class.selected]="isSelected(myProduct)">
+  </app-products-row>
+</div>

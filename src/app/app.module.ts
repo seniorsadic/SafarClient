@@ -35,6 +35,11 @@ import { OtasComponent } from './otas/otas.component';
 import { EditOtaComponent } from './otas/edit-ota/edit-ota.component';
 import { NewOtaComponent } from './otas/new-ota/new-ota.component';
 import {OtaService} from "../services/ota.service";
+import { ProductsListComponent } from './vente/products-list/products-list.component';
+import { ProductsRowComponent } from './vente/products-row/products-row.component';
+import { ProductsImageComponent } from './vente/products-image/products-image.component';
+import { ProductsPriceComponent } from './vente/products-price/products-price.component';
+import { ProductsDepartmentComponent } from './vente/products-department/products-department.component';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -59,6 +64,7 @@ const appRoutes: Routes = [
   { path: 'ota', component: OtasComponent},
   { path: 'edit-ota/:id', component: EditOtaComponent},
   { path: 'new-ota', component: NewOtaComponent},
+  { path: 'vente', component: VenteComponent},
   {path: '', redirectTo: '/about', pathMatch: 'full'}
   ];
 
@@ -91,6 +97,11 @@ const appRoutes: Routes = [
     OtasComponent,
     EditOtaComponent,
     NewOtaComponent,
+    ProductsListComponent,
+    ProductsRowComponent,
+    ProductsImageComponent,
+    ProductsPriceComponent,
+    ProductsDepartmentComponent,
 
   ],
   imports: [

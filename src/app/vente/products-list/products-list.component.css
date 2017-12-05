@@ -1,0 +1,19 @@
+.resource-row-link {
+  color: #1a2326;
+  border: 1px solid transparent;
+  margin: 0;
+  padding: 16px 23px 16px 23px;
+  position: relative;
+  text-decoration: none;
+  transition: all .3s;
+}
+
+.l-flex--column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}

@@ -1,0 +1,32 @@
+
+<div class="media">
+  <div class="media-left media-middle">
+    <a href="#">
+      <app-products-image [product]="product"></app-products-image>
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{ product.designation }}</h4>
+    <div class="meta">
+      <div class="product-sku">Identifiant #{{ product.idproduit }}</div>
+      <div class="product-sku">Quantite #{{ product.quantite }}</div>
+    </div>
+    <div class="description">
+      <app-products-department [product]="product"></app-products-department>
+    </div>
+    <app-products-price [price]="product.prix"></app-products-price>
+  </div>
+
+</div>
+
+
+<!--<div class="content">
+  <div class="header">{{ product.designation }}</div>
+  <div class="meta">
+    <div class="product-sku">SKU #{{ product.idproduit }}</div>
+  </div>
+  <div class="description">
+    <app-products-department [product]="product"></app-products-department>
+  </div>
+</div>
+<app-products-price [price]="product.prix"></app-products-price>-->
