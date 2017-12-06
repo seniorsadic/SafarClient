@@ -1,5 +1,5 @@
 
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Vente} from "../model/model.vente";
 import {Operation} from "../model/model.operation";

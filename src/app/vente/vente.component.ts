@@ -25,7 +25,7 @@ export class VenteComponent implements OnInit {
   value:number;
 
 
-  constructor(public http: Http, public produitservice: ProduitService, public router:Router, public contactService:ContactsService, public venteService:VenteService) {
+  constructor(public http: Http, public produitservice: ProduitService, public router:Router, public contactService:ContactsService) {
     this.test=[];
     this.test1=[];
     this.total=0;
@@ -72,9 +72,11 @@ export class VenteComponent implements OnInit {
   creerVente(){
     var  operation:Operation=new Operation();
     var personne:Personne;
+    var vente:Vente;
     this.contactService.getContact(1)
       .subscribe( data => {
         personne = data;
+        console.log( "Bien" );
       }, err => {
         console.log( err );
       } );
@@ -86,10 +88,9 @@ export class VenteComponent implements OnInit {
      operation.idUser=personne;
      operation.date='2017-12-8';
 
-     this.venteService.saveVente(operation)
+     this.produitservice.saveVente(operation)
       .subscribe( data => {
-        operation=data;
-
+        vente=data;
       }, err => {
         console.log( err );
       } );

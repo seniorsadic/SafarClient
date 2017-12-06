@@ -4,11 +4,16 @@ import {Http} from '@angular/http';
 import {Agence} from "../model/model.agence";
 import {Produit} from "../model/model.produit";
 import {Categorie} from "../model/model.categorie";
+import {Operation} from "../model/model.operation";
 
 @Injectable()
 export class ProduitService {
   constructor(public http: Http) {}
 
+  saveVente(operation:Operation) {
+    return this.http.post("http://localhost/Safar18/web/app_dev.php/vente/",operation)
+      .map(resp => resp.json());
+  }
 
   getProduits() {
     return this.http.get("http://localhost/Safar18/web/app_dev.php/produits")
