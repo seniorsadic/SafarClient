@@ -23,7 +23,7 @@ mode:number=1;
     this.personneService.savePersonnel(this.personne)
       .subscribe( data => {
         this.personne=data;
-      this.mode=2;
+         this.mode=2;
 
       }, err => {
         console.log( err );
