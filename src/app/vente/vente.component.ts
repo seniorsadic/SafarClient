@@ -9,6 +9,7 @@ import {Operation} from "../../model/model.operation";
 import {Personne} from "../../model/model.personne";
 import {ContactsService} from "../../services/contacts.service";
 import {VenteService} from "../../services/vente.service";
+import {DetailVente} from "../../model/model.detailvente";
 
 @Component({
   selector: 'app-vente',
@@ -23,9 +24,11 @@ export class VenteComponent implements OnInit {
   test:Produit[];
   test1:any;
   value:number;
+  vente:any;
 
 
-  constructor(public http: Http, public produitservice: ProduitService, public router:Router, public contactService:ContactsService) {
+  constructor(public http: Http, public produitservice: ProduitService, public router:Router, public contactService:ContactsService
+    , public venteService:VenteService) {
     this.test=[];
     this.test1=[];
     this.total=0;
@@ -33,6 +36,7 @@ export class VenteComponent implements OnInit {
 
   ngOnInit() {
     this.doSearch();
+
   }
 
   doSearch() {  this.produitservice.getProduits()
@@ -50,7 +54,9 @@ export class VenteComponent implements OnInit {
     this.total+=Number(product.prix);
     console.log('Quantite: ', this.total);
   }
+getcontact() {
 
+}
   convertir(valeur:string):any{
     return [Number(valeur)];
   }
@@ -70,32 +76,44 @@ export class VenteComponent implements OnInit {
   }
 
   creerVente(){
-    var  operation:Operation=new Operation();
-    var personne:Personne;
-    var vente:Vente;
-    this.contactService.getContact(1)
-      .subscribe( data => {
-        personne = data;
-        console.log( "Bien" );
-      }, err => {
-        console.log( err );
-      } );
+
+     var  operation:Operation=new Operation();
 
      operation.service="Vente";
      operation.reference="VENTE002";
      operation.statut="Payé";
      operation.montant=this.total;
-     operation.idUser=personne;
+     operation.iduser=1;
      operation.date='2017-12-8';
 
-     this.produitservice.saveVente(operation)
+     this.venteService.saveVente(operation)
       .subscribe( data => {
-        vente=data;
+        this.vente=data;
+        this.afficher();
       }, err => {
         console.log( err );
       } );
 
+  }
 
+  afficher(){
+
+    var  detailVente:DetailVente=new DetailVente();
+    for(let i = 1; i <= this.test.length; i++){
+       detailVente.quantite=1;
+       detailVente.remise=0;
+       detailVente.prixunitaire=this.test[i].prix;
+       detailVente.idproduit=this.test[i].idproduit;
+       detailVente.idvente=this.vente.idvente;
+
+      this.venteService.saveVenteProduit(detailVente)
+        .subscribe( data => {
+          console.log( data );
+        }, err => {
+          console.log( err );
+        } );
+    }
+    console.log( 'Terminer ' );
   }
 
 }

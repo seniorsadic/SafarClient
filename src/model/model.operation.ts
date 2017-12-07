@@ -7,5 +7,5 @@ export  class Operation{
   statut:string="";
   montant:number=0;
   date:string="";
-  idUser:Personne;
+  iduser:any;
 }

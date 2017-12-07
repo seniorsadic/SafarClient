@@ -40,6 +40,7 @@ import { ProductsRowComponent } from './vente/products-row/products-row.componen
 import { ProductsImageComponent } from './vente/products-image/products-image.component';
 import { ProductsPriceComponent } from './vente/products-price/products-price.component';
 import { ProductsDepartmentComponent } from './vente/products-department/products-department.component';
+import {VenteService} from "../services/vente.service";
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -107,7 +108,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule
   ],
-  providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService],
+  providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
