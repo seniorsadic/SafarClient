@@ -41,6 +41,7 @@ import { ProductsImageComponent } from './vente/products-image/products-image.co
 import { ProductsPriceComponent } from './vente/products-price/products-price.component';
 import { ProductsDepartmentComponent } from './vente/products-department/products-department.component';
 import {VenteService} from "../services/vente.service";
+import {Ng2SmartTableModule} from "ng2-smart-table";
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -104,9 +105,10 @@ const appRoutes: Routes = [
     ProductsPriceComponent,
     ProductsDepartmentComponent,
 
+
   ],
   imports: [
-    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule
+    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule
   ],
   providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService],
   bootstrap: [AppComponent]

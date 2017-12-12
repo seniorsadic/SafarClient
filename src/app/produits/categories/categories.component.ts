@@ -13,11 +13,78 @@ export class CategoriesComponent implements OnInit {
 
   pageCategorie:any;
   pages:any;
+  settings:any = {
+    mode: 'inline',
+    columns: {
+      idcategorie: {
+        title: 'Identifiant',
+        editable: true
+      },
+      designation: {
+        title: 'Designation'
+      }
+    },
+    add: {
+      addButtonContent: '<i class="glyphicon glyphicon-plus" aria-hidden="true">Ajouter</i>',
+      createButtonContent: '<i class="fa fa-check-square">Créer</i>',
+      cancelButtonContent: '<i class="fa fa-minus-square">Annuler</i>',
+      confirmCreate: true
+    },
+    edit: {
+      editButtonContent: '<i class="glyphicon glyphicon-pencil">Modifier</i>',
+      saveButtonContent: '<i class="fa fa-check-square">Modifier</i>',
+      cancelButtonContent: '<i class="fa fa-minus-square">Annuler</i>',
+      confirmSave: true
+    },
+    delete: {
+      deleteButtonContent: '<i class="fa fa-trash">Supprimer</i>',
+      confirmDelete: true
+    },
+    pager: {
+      display: true,
+      perPage: 3
+    },
+  };
+
   constructor(public http: Http, public produitService: ProduitService, public router:Router) { }
 
   ngOnInit() {
     this.doSearch();
   }
+
+  ajoutCate(event) {
+    this.produitService.saveCategorie(event.newData)
+      .subscribe( data => {
+        console.log( 'Bien : ',data );
+        event.confirm.resolve();
+        this.doSearch();
+      }, err => {
+        console.log( err );
+      } );
+  }
+
+  modifCate(event) {
+    this.produitService.updateCategorie(event.newData)
+      .subscribe(data=>{
+        console.log(data);
+        this.doSearch()
+      },err=>{
+        console.log(err);
+      });
+  }
+
+  deleteCate(event) {
+    let confirm = window.confirm("est vous sure?");
+    if (confirm == true) {
+      this.produitService.deleteCategorie(event.data['idcategorie'])
+        .subscribe(data => {
+          event.confirm.resolve();
+        }, err => {
+          console.log(err);
+        })
+    }
+  }
+
   doSearch() {  this.produitService.getCategories()
     .subscribe( data => {
       this.pageCategorie = data;
@@ -27,10 +94,8 @@ export class CategoriesComponent implements OnInit {
       console.log( err );
     } ); }
 
-
-  onEditCategorie(id:number){
+   onEditCategorie(id:number){
     this.router.navigate(['/edit-categorie',id]);
-
   }
 
   onDeleteCatergoie(c:Categorie) {

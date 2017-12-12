@@ -75,6 +75,10 @@ getcontact() {
     console.log(this.test1);
   }
 
+  desole(){
+    this.router.navigate(['/reporting']);
+  }
+
   creerVente(){
 
      var  operation:Operation=new Operation();
@@ -97,15 +101,15 @@ getcontact() {
   }
 
   afficher(){
-
+    console.log( 'Nbre ', this.test.length );
     var  detailVente:DetailVente=new DetailVente();
-    for(let i = 1; i <= this.test.length; i++){
+    for(var i =0; i < this.test.length; i++){
        detailVente.quantite=1;
        detailVente.remise=0;
        detailVente.prixunitaire=this.test[i].prix;
        detailVente.idproduit=this.test[i].idproduit;
        detailVente.idvente=this.vente.idvente;
-
+      console.log( 'Nbre ', i );
       this.venteService.saveVenteProduit(detailVente)
         .subscribe( data => {
           console.log( data );

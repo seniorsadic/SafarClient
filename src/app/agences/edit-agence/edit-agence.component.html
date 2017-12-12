@@ -32,9 +32,10 @@
           </div>
           <div class="form-group">
             <label class="control-label"> Ville:</label>
-            <select class="form-control" name="repeatSelect1" id="repeatSelect1" [(ngModel)]="agence.idville">
+            <select class="form-control" name="repeatSelect1" id="repeatSelect1" [(ngModel)]="agence.idville" >
               <option
-                      *ngFor="let p of pageVille" value="{{p.idville}}" >{{p.designation}}</option>
+                *ngIf="agence.idville!=null" value="{{agence.idville.idville}}" selected >{{agence.idville.designation}}</option>
+              <option *ngFor="let p of pageVille" value="{{p.idville}}" selected>{{p.designation}}</option>
             </select>
 
           </div>

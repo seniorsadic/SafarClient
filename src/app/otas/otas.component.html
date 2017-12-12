@@ -22,8 +22,9 @@
 
 
     <h1>Liste des otas</h1>
-
-    <div class="table-responsive">
+    <ng2-smart-table [settings]="settings" (create)="ajout($event)" [source]="pageOta" (edit)="edit($event)"
+                     (delete)="delete($event)"></ng2-smart-table>
+    <!--<div class="table-responsive">
 
 
       <table  class="table table-striped">
@@ -52,8 +53,7 @@
         </ul>
       </div>
     </div>
-
-
+-->
   </main>
 </div>
 

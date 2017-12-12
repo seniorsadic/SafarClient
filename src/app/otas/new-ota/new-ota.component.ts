@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Ota} from "../../../model/model.ota";
 import {OtaService} from "../../../services/ota.service";
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-new-ota',
   templateUrl: './new-ota.component.html',
@@ -11,7 +11,7 @@ export class NewOtaComponent implements OnInit {
   mode:number=1;
   ota: Ota=new Ota();
 
-  constructor(public otaService:OtaService) { }
+  constructor(public otaService:OtaService,public router:Router) { }
 
   ngOnInit() {
   }
@@ -20,7 +20,7 @@ export class NewOtaComponent implements OnInit {
       .subscribe( data => {
         this.ota=data;
         this.mode=2;
-
+        this.router.navigate(['/ota']);
       }, err => {
         console.log( err );
       } );

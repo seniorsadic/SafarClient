@@ -12,10 +12,47 @@ import {Ota} from "../../model/model.ota";
 export class OtasComponent implements OnInit {
   pageOta: any;
   pages:any;
+  settings:any;
   constructor(public http: Http, public otaservice: OtaService, public router:Router) { }
 
   ngOnInit() {
     this.doSearch();
+    this.settings={
+      mode: 'external',
+      columns: {
+        idoperateur: {
+          title: 'Identifiant',
+          width:  '70px'
+        },
+        designation: {
+          title: 'Désignation'
+        },
+        code: {
+          title: 'Code'
+        },
+
+      },
+      add: {
+        addButtonContent: '<i class="glyphicon glyphicon-plus" aria-hidden="true">Ajouter</i>',
+        createButtonContent: '<i class="fa fa-check-square"> Créer</i>',
+        cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
+        confirmCreate: true
+      },
+      edit: {
+        editButtonContent: '<i class="glyphicon glyphicon-pencil"> </i>',
+        saveButtonContent: '<i class="fa fa-check-square"> Modifier</i>',
+        cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
+        confirmSave: true
+      },
+      delete: {
+        deleteButtonContent: '<i class="glyphicon glyphicon-trash"></i>',
+        confirmDelete: true
+      },
+      pager: {
+        display: true,
+        perPage: 3
+      },
+    };
   }
   doSearch() {  this.otaservice.getOtas()
     .subscribe( data => {
@@ -26,7 +63,26 @@ export class OtasComponent implements OnInit {
       console.log( err );
     } ); }
 
+  ajout(event){
 
+    this.router.navigate(['/new-ota']);
+  }
+
+  edit(event){
+    console.log(event.data);
+    this.router.navigate(['/edit-ota',event.data.idoperateur]);
+  }
+  delete(event){
+    let confirm = window.confirm("est vous sure?");
+    if (confirm == true) {
+      this.otaservice.deleteOta(event.data.idoperateur)
+        .subscribe(data => {
+          this.doSearch();
+        }, err => {
+          console.log(err);
+        })
+    }
+  }
   onEditOta(id:number){
     this.router.navigate(['/edit-ota',id]);
 

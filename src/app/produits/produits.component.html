@@ -28,8 +28,10 @@
 
 
     <h1 class="text-center">Liste des produits</h1>
+    <ng2-smart-table [settings]="settings" (create)="ajout($event)" [source]="pageProduit" (edit)="edit($event)"
+                     (delete)="delete($event)"></ng2-smart-table>
 
-    <div class="table-responsive">
+   <!-- <div class="table-responsive">
 
 
       <table  class="table table-striped">
@@ -62,8 +64,7 @@
         </ul>
       </div>
     </div>
-
-
+-->
   </main>
 </div>
 

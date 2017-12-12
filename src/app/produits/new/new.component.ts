@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Produit} from "../../../model/model.produit";
 import {ProduitService} from "../../../services/produit.service";
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
@@ -12,7 +12,7 @@ export class NewComponent implements OnInit {
   produit: Produit=new Produit();
   pageAgence:any;
   pageCategorie:any;
-  constructor(public produitService:ProduitService) { }
+  constructor(public produitService:ProduitService,public router:Router) { }
 
   ngOnInit() {
     this.getAgences();
@@ -34,7 +34,7 @@ export class NewComponent implements OnInit {
       .subscribe( data => {
         this.pageAgence=data;
         //this.mode=2;
-
+        this.router.navigate(['/produit']);
       }, err => {
         console.log( err );
       } );

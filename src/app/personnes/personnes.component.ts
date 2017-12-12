@@ -17,10 +17,58 @@ motCle: String= '';
 page: Number= 0 ;
 size: Number= 5 ;
 pages: any;
+  settings:any ;
   constructor( public http: Http, public contactservice: ContactsService, public router:Router) { }
 
   ngOnInit() {
-      this.doSearch();
+
+    this.doSearch();
+    this.settings={
+      mode: 'external',
+      columns: {
+        iduser: {
+          title: 'Identifiant',
+          width:  '70px'
+        },
+        numero: {
+          title: 'Numéro'
+        },
+        prenoms: {
+          title: 'Prénom'
+        },
+        nom: {
+          title: 'Nom'
+        },
+        idagence: {
+          title: 'Agence',
+          type: 'html',
+          valuePrepareFunction: (value) => {
+            return value.designation;
+          },
+
+        }
+      },
+      add: {
+        addButtonContent: '<i class="glyphicon glyphicon-plus" aria-hidden="true">Ajouter</i>',
+        createButtonContent: '<i class="fa fa-check-square"> Créer</i>',
+        cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
+        confirmCreate: true
+      },
+      edit: {
+        editButtonContent: '<i class="glyphicon glyphicon-pencil"> </i>',
+        saveButtonContent: '<i class="fa fa-check-square"> Modifier</i>',
+        cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
+        confirmSave: true
+      },
+      delete: {
+        deleteButtonContent: '<i class="glyphicon glyphicon-trash"></i>',
+        confirmDelete: true
+      },
+      pager: {
+        display: true,
+        perPage: 3
+      },
+    };
   }
   /*doSearch() {  this.contactservice.getContacts(this.motCle, this.page, this.size)
     .subscribe( data => {
@@ -43,6 +91,25 @@ pages: any;
     chercher() {
     this.doSearch();
     }
+  ajout(event){
+    this.router.navigate(['/new-personne']);
+  }
+
+  edit(event){
+    console.log(event.data);
+    this.router.navigate(['/edit-personne',event.data.iduser]);
+  }
+  delete(event){
+    let confirm = window.confirm("est vous sure?");
+    if (confirm == true) {
+      this.contactservice.deletePersonnel(event.data.iduser)
+        .subscribe(data => {
+          this.doSearch();
+        }, err => {
+          console.log(err);
+        })
+    }
+  }
 
     gotoPages(i){
     this.page=i;

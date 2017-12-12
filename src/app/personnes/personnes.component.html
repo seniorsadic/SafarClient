@@ -22,7 +22,8 @@
 
 
     <h1>Liste des personnes</h1>
-
+    <ng2-smart-table [settings]="settings" (create)="ajout($event)" [source]="pagePerosonne" (edit)="edit($event)"
+                     (delete)="delete($event)"></ng2-smart-table>
     <!--<div class="horizontal-scroll">
       <table class="table table-condensed">
         <thead>
@@ -50,7 +51,7 @@
       </table>
     </div>-->
 
-    <div class="table-responsive">
+ <!--   <div class="table-responsive">
 
             <table  class="table table-striped">
               <thead>
@@ -79,7 +80,7 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div>-->
 
   </main>
 </div>
