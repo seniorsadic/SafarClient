@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProduitService} from "../../../../services/produit.service";
 import {Categorie} from "../../../../model/model.categorie";
-
+import {DialogModule} from 'primeng/primeng'
 @Component({
   selector: 'app-new-categorie',
   templateUrl: './new-categorie.component.html',
@@ -26,7 +26,11 @@ export class NewCategorieComponent implements OnInit {
       } );
   }
 
+  display: boolean = false;
 
+  showDialog() {
+    this.display = true;
+  }
 
 
 }

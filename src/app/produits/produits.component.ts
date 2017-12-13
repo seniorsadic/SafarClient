@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
 import {ProduitService} from "../../services/produit.service";
 import {Produit} from "../../model/model.produit";
+
+
 @Component({
   selector: 'app-produits',
   templateUrl: './produits.component.html',
@@ -13,6 +15,11 @@ export class ProduitsComponent implements OnInit {
   pageProduit: any;
   pages:any;
   settings:any;
+  display: boolean = false;
+
+  showDialog() {
+    this.display = true;
+  }
   constructor(public http: Http, public produitservice: ProduitService, public router:Router) { }
 
   ngOnInit() {
@@ -127,4 +134,6 @@ export class ProduitsComponent implements OnInit {
     this.pages=i;
     this.doSearch();
   }
+
+
 }

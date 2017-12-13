@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { CalendarModule, SharedModule} from 'primeng/primeng';
 import { AppComponent } from './app.component';
 import { PersonnesComponent } from './personnes/personnes.component';
 import {HttpModule} from '@angular/http';
@@ -42,6 +42,8 @@ import { ProductsPriceComponent } from './vente/products-price/products-price.co
 import { ProductsDepartmentComponent } from './vente/products-department/products-department.component';
 import {VenteService} from "../services/vente.service";
 import {Ng2SmartTableModule} from "ng2-smart-table";
+import {DialogModule} from 'primeng/primeng';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -74,6 +76,10 @@ const appRoutes: Routes = [
 @NgModule({
   /*imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],*/
+
+
+
+
   declarations: [
     AppComponent,
     PersonnesComponent,
@@ -108,7 +114,8 @@ const appRoutes: Routes = [
 
   ],
   imports: [
-    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule
+    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule, CalendarModule,DialogModule,BrowserAnimationsModule,
+    SharedModule,
   ],
   providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService],
   bootstrap: [AppComponent]

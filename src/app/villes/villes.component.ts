@@ -103,7 +103,7 @@ export class VillesComponent implements OnInit {
         })
     }
   }
-  
+
   gotoPages(i){
     this.pages=i;
     this.doSearch();
