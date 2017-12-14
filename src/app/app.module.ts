@@ -43,8 +43,6 @@ import { ProductsDepartmentComponent } from './vente/products-department/product
 import {VenteService} from "../services/vente.service";
 import {Ng2SmartTableModule} from "ng2-smart-table";
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'personne', component: PersonnesComponent},
@@ -76,10 +74,6 @@ const appRoutes: Routes = [
 @NgModule({
   /*imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],*/
-
-
-
-
   declarations: [
     AppComponent,
     PersonnesComponent,
@@ -114,7 +108,7 @@ const appRoutes: Routes = [
 
   ],
   imports: [
-    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule, BrowserAnimationsModule, ,
+    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule
   ],
   providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService],
   bootstrap: [AppComponent]
