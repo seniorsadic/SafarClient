@@ -51,6 +51,7 @@ export class VenteComponent implements OnInit {
   productWasSelected(product: Produit): void {
     console.log('Product clicked: ', product);
     this.test.push(product);
+    this.test1.push({'idProduit':product.idproduit,'quantite':1});
     this.total+=Number(product.prix);
     console.log('Quantite: ', this.total);
   }
@@ -130,17 +131,15 @@ export class VenteComponent implements OnInit {
   }
 
   afficher(){
-    console.log( 'Nbre ', this.test.length );
     var  detailVente:DetailVente=new DetailVente();
     for(var i =0; i < this.test.length; i++){
        var numero=this.rechercherid(this.test[i].idproduit);
-       console.log( 'Nbre ', numero );
+       console.log( 'Nbre ',this.test[i].idproduit );
        detailVente.quantite=this.test1[numero].quantite;
        detailVente.remise=0;
        detailVente.prixunitaire=this.test[i].prix;
        detailVente.idproduit=this.test[i].idproduit;
        detailVente.idvente=this.vente.idvente;
-      console.log( 'Nbre ', i );
       this.venteService.saveVenteProduit(detailVente)
         .subscribe( data => {
           console.log( data );
