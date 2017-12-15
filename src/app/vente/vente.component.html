@@ -1,4 +1,4 @@
-<br/><br/><br/>
+
 
 <div class="row">
 
@@ -19,7 +19,7 @@
       </li>-->
     </ul>
   </nav>
-  <div class="col-xs-6 col-sm-6 col-md-6">
+  <div class="col-xs-6 col-sm-6 col-md-6 sidebar">
     <div class="panel panel-primary">
       <div class="panel-heading">Liste des produits</div>
       <div class="panel-body">
@@ -32,7 +32,7 @@
       </div>
     </div>
   </div>
-  <div class="col-xs-6 col-md-4">
+  <div class="col-xs-6 col-md-4 sidebar">
     <div class="panel panel-primary">
       <div class="panel-heading">Liste des produits selectionnés</div>
       <div class="panel-body">
@@ -54,7 +54,7 @@
           </div>
         </div>
         <p class="text-right">Total: {{ total }} FCFA</p>
-        <button type="submit" class="btn btn-primary" (click)="creerVente()">Vendre</button>
+        <button type="submit" class="btn btn-primary" (click)="creerVente()">Vendre <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
         <button type="submit" class="btn btn-primary" (click)="desole()">Afficher</button>
       </form>
     </div>

@@ -42,6 +42,7 @@ import { ProductsPriceComponent } from './vente/products-price/products-price.co
 import { ProductsDepartmentComponent } from './vente/products-department/products-department.component';
 import {VenteService} from "../services/vente.service";
 import {Ng2SmartTableModule} from "ng2-smart-table";
+import {AngularFontAwesomeModule} from "angular-font-awesome";
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -108,7 +109,7 @@ const appRoutes: Routes = [
 
   ],
   imports: [
-    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule
+    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule, AngularFontAwesomeModule
   ],
   providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService],
   bootstrap: [AppComponent]
