@@ -41,7 +41,7 @@
         <div class="form-group" *ngFor="let a of test">
           <div class="row">
             <div class="col-xs-6 col-md-2">
-              <select (click)="ajouter(a.idproduit)">
+              <select #t (change)="ajouter(a.idproduit,t.value)">
                 <option *ngFor="let i of createRange(a.quantite)" value="{{ i }}" >{{ i }}x</option>
               </select>
             </div>

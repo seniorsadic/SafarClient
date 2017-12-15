@@ -24,7 +24,7 @@ export class VenteComponent implements OnInit {
   pages:any;
   test:Produit[];
   test1:any;
-  value:number;
+  value:any;
   vente:any;
 
 
@@ -61,12 +61,14 @@ export class VenteComponent implements OnInit {
   productWasSelected(product: Produit): void {
     console.log('Product clicked: ', product);
     this.test.push(product);
+    this.test1.push({'idProduit':product.idproduit,'quantite':1});
     this.total+=Number(product.prix);
     console.log('Quantite: ', this.total);
   }
-getcontact() {
 
-}
+  getcontact() {
+
+  }
   convertir(valeur:string):any{
     return [Number(valeur)];
   }
@@ -79,10 +81,38 @@ getcontact() {
     return k;
   }
 
-  ajouter(id:number){
-    this.test1.push({id});
-    console.log(this.value);
+  ajouter(id:number,quantite:number ){
+    var idligne=this.rechercherid(id);
+    if( idligne == -1){
+      this.test1.push({'idProduit':id,'quantite':quantite});
+    }else
+      this.test1[idligne].quantite=quantite;
+    this.calculer();
     console.log(this.test1);
+  }
+
+  calculer(){
+    this.total=0;
+    for(var i =0; i < this.test1.length; i++){
+      var numero=this.rechercheridProduit(this.test1[i].idProduit);
+      this.total+=this.test1[i].quantite*Number(this.test[numero].prix);
+    }
+  }
+
+  rechercherid(id:number):number{
+    for(var i =0; i < this.test1.length; i++){
+      if (this.test1[i].idProduit==id)
+        return i;
+    }
+    return -1;
+  }
+
+  rechercheridProduit(id:number):number{
+    for(var i =0; i < this.test.length; i++){
+      if (this.test[i].idproduit==id)
+        return i;
+    }
+    return -1;
   }
 
   desole(){
@@ -111,15 +141,15 @@ getcontact() {
   }
 
   afficher(){
-    console.log( 'Nbre ', this.test.length );
     var  detailVente:DetailVente=new DetailVente();
     for(var i =0; i < this.test.length; i++){
-       detailVente.quantite=1;
+       var numero=this.rechercherid(this.test[i].idproduit);
+       console.log( 'Nbre ',this.test[i].idproduit );
+       detailVente.quantite=this.test1[numero].quantite;
        detailVente.remise=0;
        detailVente.prixunitaire=this.test[i].prix;
        detailVente.idproduit=this.test[i].idproduit;
        detailVente.idvente=this.vente.idvente;
-      console.log( 'Nbre ', i );
       this.venteService.saveVenteProduit(detailVente)
         .subscribe( data => {
           console.log( data );
