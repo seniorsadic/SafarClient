@@ -19,6 +19,7 @@ import {DetailVente} from "../../model/model.detailvente";
 export class VenteComponent implements OnInit {
 
   total:number;
+  category:any;
   pageProduit: any;
   pages:any;
   test:Produit[];
@@ -36,7 +37,16 @@ export class VenteComponent implements OnInit {
 
   ngOnInit() {
     this.doSearch();
+    this.catego();
 
+  }
+  catego() { this.produitservice.getCategories()
+    .subscribe( data => {
+      this.category = data;
+      console.log( this.category );
+    }, err => {
+      console.log( err );
+    } );
   }
 
   doSearch() {  this.produitservice.getProduits()

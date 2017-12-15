@@ -3,25 +3,27 @@
   <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
     <ul class="nav nav-pills flex-column">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+        <a class="nav-link active">Gestion de l'agence<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/new-personne">Ajouter</a>
+        <a class="nav-link" routerLink="/new-agence">Agence</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Analytics</a>
+        <a class="nav-link" href="#">Personnel</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Export</a>
+        <a class="nav-link" href="#">Gestion des profils</a>
       </li>
     </ul>
 
   </nav>
 
   <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Liste des personnes</div>
+      <div class="panel-body">
 
-
-    <h1>Liste des personnes</h1>
+        <div class="table-responsive">
     <ng2-smart-table [settings]="settings" (create)="ajout($event)" [source]="pagePerosonne" (edit)="edit($event)"
                      (delete)="delete($event)"></ng2-smart-table>
     <!--<div class="horizontal-scroll">
@@ -81,7 +83,9 @@
               </ul>
             </div>
           </div>-->
-
+        </div>
+      </div>
+    </div>
   </main>
 </div>
 

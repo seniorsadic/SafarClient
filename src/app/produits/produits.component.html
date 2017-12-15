@@ -5,32 +5,26 @@
   <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
     <ul class="nav nav-pills flex-column">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+        <a class="nav-link active">Produits<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/new-produit">Ajouter</a>
+        <a class="nav-link" routerLink="/new-produit">Produits</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/produit">Lister</a>
-      </li>
-    </ul>
-
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/categorie">Liste Categorie</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/new-categorie">Nouvelle Catégorie</a>
+        <a class="nav-link" routerLink="/produit"> Categorie</a>
       </li>
     </ul>
 
   </nav>
 
   <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Liste des produits</div>
+      <div class="panel-body">
 
+        <div class="table-responsive">
 
-    <h1 class="text-center">Liste des produits</h1>
-    <ng2-smart-table [settings]="settings" (create)="ajout($event)" [source]="pageProduit" (edit)="edit($event)"
+        <ng2-smart-table [settings]="settings" (create)="ajout($event)" [source]="pageProduit" (edit)="edit($event)"
                      (delete)="delete($event)"></ng2-smart-table>
 
 
@@ -68,6 +62,9 @@
       </div>
     </div>
 -->
+        </div>
+      </div>
+    </div>
   </main>
 </div>
 
