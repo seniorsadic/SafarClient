@@ -66,25 +66,12 @@ export class VillesComponent implements OnInit {
     } ); }
 
   ajoutVille(event){
-    this.villeservice.saveVille(event.newData)
-      .subscribe( data => {
-        event.confirm.resolve();
-        this.doSearch();
-
-      }, err => {
-        console.log( err );
-      } );
+    this.router.navigate(['/new-ville']);
   }
 
+
   modifVille(event){
-    this.villeservice.updateVille(event.newData)
-      .subscribe(data=>{
-        console.log(data);
-        this.doSearch()
-      },err=>{
-        console.log(err);
-        alert("Probléme");
-      })
+    this.router.navigate(['/edit-ville',event.data.idville]);
   }
 
   deleteVille(event){

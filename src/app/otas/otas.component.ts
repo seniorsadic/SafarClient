@@ -39,13 +39,13 @@ export class OtasComponent implements OnInit {
         confirmCreate: true
       },
       edit: {
-        editButtonContent: '<i class="glyphicon glyphicon-pencil"> Modifier</i>',
+        editButtonContent: '<i class="glyphicon glyphicon-pencil"></i>',
         saveButtonContent: '<i class="fa fa-check-square"> Modifier</i>',
         cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
         confirmSave: true
       },
       delete: {
-        deleteButtonContent: '<i class="glyphicon glyphicon-trash">Supprimer</i>',
+        deleteButtonContent: '<i class="glyphicon glyphicon-trash"></i>',
         confirmDelete: true
       },
       pager: {

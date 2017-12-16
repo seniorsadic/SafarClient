@@ -14,7 +14,7 @@ export class CategoriesComponent implements OnInit {
   pageCategorie:any;
   pages:any;
   settings:any = {
-    mode: 'inline',
+    mode: 'external',
     columns: {
       idcategorie: {
         title: 'Identifiant',
@@ -31,13 +31,13 @@ export class CategoriesComponent implements OnInit {
       confirmCreate: true
     },
     edit: {
-      editButtonContent: '<i class="glyphicon glyphicon-pencil">Modifier</i>',
+      editButtonContent: '<i class="glyphicon glyphicon-pencil"></i>',
       saveButtonContent: '<i class="fa fa-check-square">Modifier</i>',
       cancelButtonContent: '<i class="fa fa-minus-square">Annuler</i>',
       confirmSave: true
     },
     delete: {
-      deleteButtonContent: '<i class="fa fa-trash">Supprimer</i>',
+      deleteButtonContent: '<i class="fa fa-trash"></i>',
       confirmDelete: true
     },
     pager: {
@@ -51,26 +51,12 @@ export class CategoriesComponent implements OnInit {
   ngOnInit() {
     this.doSearch();
   }
-
   ajoutCate(event) {
-    this.produitService.saveCategorie(event.newData)
-      .subscribe( data => {
-        console.log( 'Bien : ',data );
-        event.confirm.resolve();
-        this.doSearch();
-      }, err => {
-        console.log( err );
-      } );
+    this.router.navigate(['/new-categorie']);
   }
 
   modifCate(event) {
-    this.produitService.updateCategorie(event.newData)
-      .subscribe(data=>{
-        console.log(data);
-        this.doSearch()
-      },err=>{
-        console.log(err);
-      });
+    this.router.navigate(['/edit-categorie',event.data.idcategorie]);
   }
 
   deleteCate(event) {
