@@ -15,16 +15,18 @@ export class VillesComponent implements OnInit {
   pageVille: any;
   pages:any;
   settings:any;
+
+
+
   constructor(public http: Http, public villeservice: VilleService, public router:Router) { }
 
   ngOnInit() {
     this.doSearch();
     this.settings={
-      mode: 'external',
+      mode: 'inline',
       columns: {
         idville: {
-          title: 'Identifiant',
-          width:  '70px'
+          title: 'Identifiant'
         },
         designation: {
           title: 'Désignation'
@@ -32,7 +34,7 @@ export class VillesComponent implements OnInit {
 
       },
       add: {
-        addButtonContent: '<i class="glyphicon glyphicon-plus" aria-hidden="true">Ajouter</i>',
+        addButtonContent: '<i class="fa fa-plus-circle" aria-hidden="true">Ajouter</i>',
         createButtonContent: '<i class="fa fa-check-square"> Créer</i>',
         cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
         confirmCreate: true
@@ -53,6 +55,7 @@ export class VillesComponent implements OnInit {
       },
     };
   }
+
   doSearch() {  this.villeservice.getVilles()
     .subscribe( data => {
       this.pageVille = data;
@@ -62,21 +65,34 @@ export class VillesComponent implements OnInit {
       console.log( err );
     } ); }
 
-  ajout(event){
+  ajoutVille(event){
+    this.villeservice.saveVille(event.newData)
+      .subscribe( data => {
+        event.confirm.resolve();
+        this.doSearch();
 
-    this.router.navigate(['/new-ville']);
+      }, err => {
+        console.log( err );
+      } );
   }
 
-  edit(event){
-    console.log(event.data);
-    this.router.navigate(['/edit-ville',event.data.idville]);
+  modifVille(event){
+    this.villeservice.updateVille(event.newData)
+      .subscribe(data=>{
+        console.log(data);
+        this.doSearch()
+      },err=>{
+        console.log(err);
+        alert("Probléme");
+      })
   }
-  delete(event){
+
+  deleteVille(event){
     let confirm = window.confirm("est vous sure?");
     if (confirm == true) {
       this.villeservice.deleteVille(event.data.idville)
         .subscribe(data => {
-          this.doSearch();
+          event.confirm.resolve();
         }, err => {
           console.log(err);
         })

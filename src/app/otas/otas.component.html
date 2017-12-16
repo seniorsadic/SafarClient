@@ -26,8 +26,8 @@
     <div class="panel-body">
       <div class="table-responsive">
 
-    <ng2-smart-table [settings]="settings" (create)="ajout($event)" [source]="pageOta" (edit)="edit($event)"
-                     (delete)="delete($event)"></ng2-smart-table>
+    <ng2-smart-table [settings]="settings" (createConfirm)="ajout($event)" [source]="pageOta" (editConfirm)="edit($event)"
+                     (deleteConfirm)="delete($event)"></ng2-smart-table>
     <!--<div class="table-responsive">
 
 

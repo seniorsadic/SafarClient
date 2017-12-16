@@ -25,7 +25,7 @@ export class CategoriesComponent implements OnInit {
       }
     },
     add: {
-      addButtonContent: '<i class="glyphicon glyphicon-plus" aria-hidden="true">Ajouter</i>',
+      addButtonContent: '<i class="fa fa-plus-circle" aria-hidden="true">Ajouter</i>',
       createButtonContent: '<i class="fa fa-check-square">Créer</i>',
       cancelButtonContent: '<i class="fa fa-minus-square">Annuler</i>',
       confirmCreate: true

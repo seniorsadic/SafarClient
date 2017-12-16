@@ -25,37 +25,40 @@
   </nav>
 
   <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
+
     <div class="panel panel-primary">
       <div class="panel-heading">Liste des villes</div>
       <div class="panel-body">
         <div class="table-responsive">
     <div class="table-responsive">
 
+      <ng2-smart-table [settings]="settings" [source]="pageVille" (createConfirm)="ajoutVille($event)"
+                       (editConfirm)="modifVille($event)" (deleteConfirm)="deleteVille($event)"></ng2-smart-table>
 
-      <table  class="table table-striped">
-        <thead>
-        <tr>
-           <th>Ville</th>
-        </tr>
-        </thead>
-        <tr *ngFor="let a of pageVille">
-          <td>{{a.designation}} </td>
-          <td>
-            <a (click)="onEditVille(a.idville)" class="clickable"> Modifier</a>
-          </td>
-          <td>
-            <a (click)="onDeleteVille(a)" class="clickable"> Supprimer</a>
-          </td>
-        </tr>
-      </table>
+      <!--<table  class="table table-striped">-->
+        <!--<thead>-->
+        <!--<tr>-->
+           <!--<th>Ville</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tr *ngFor="let a of pageVille">-->
+          <!--<td>{{a.designation}} </td>-->
+          <!--<td>-->
+            <!--<a (click)="onEditVille(a.idville)" class="clickable"> Modifier</a>-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--<a (click)="onDeleteVille(a)" class="clickable"> Supprimer</a>-->
+          <!--</td>-->
+        <!--</tr>-->
+      <!--</table>-->
 
-      <div class="container">
-        <ul class="nav nav-pills">
-          <li [ngClass]="{'active':i==page}" *ngFor=" let p of pages;let i=index">
-            <a class="clickable" (click)="gotoPages(i)">{{i}}</a>
-          </li>
-        </ul>
-      </div>
+      <!--<div class="container">-->
+        <!--<ul class="nav nav-pills">-->
+          <!--<li [ngClass]="{'active':i==page}" *ngFor=" let p of pages;let i=index">-->
+            <!--<a class="clickable" (click)="gotoPages(i)">{{i}}</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
     </div>
         </div>
       </div>

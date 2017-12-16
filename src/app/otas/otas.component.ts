@@ -18,7 +18,7 @@ export class OtasComponent implements OnInit {
   ngOnInit() {
     this.doSearch();
     this.settings={
-      mode: 'external',
+      mode: 'inline',
       columns: {
         idoperateur: {
           title: 'Identifiant',
@@ -39,13 +39,13 @@ export class OtasComponent implements OnInit {
         confirmCreate: true
       },
       edit: {
-        editButtonContent: '<i class="glyphicon glyphicon-pencil"> </i>',
+        editButtonContent: '<i class="glyphicon glyphicon-pencil"> Modifier</i>',
         saveButtonContent: '<i class="fa fa-check-square"> Modifier</i>',
         cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
         confirmSave: true
       },
       delete: {
-        deleteButtonContent: '<i class="glyphicon glyphicon-trash"></i>',
+        deleteButtonContent: '<i class="glyphicon glyphicon-trash">Supprimer</i>',
         confirmDelete: true
       },
       pager: {
@@ -65,13 +65,26 @@ export class OtasComponent implements OnInit {
 
   ajout(event){
 
-    this.router.navigate(['/new-ota']);
+    this.otaservice.saveOta(event.newData)
+      .subscribe( data => {
+        event.confirm.resolve();
+        this.doSearch();
+      }, err => {
+        console.log( err );
+      } );
   }
 
   edit(event){
-    console.log(event.data);
-    this.router.navigate(['/edit-ota',event.data.idoperateur]);
+    this.otaservice.updateOta(event.newData)
+      .subscribe(data=>{
+        console.log(data);
+        this.doSearch()
+      },err=>{
+        console.log(err);
+        alert("Probléme");
+      })
   }
+
   delete(event){
     let confirm = window.confirm("est vous sure?");
     if (confirm == true) {
