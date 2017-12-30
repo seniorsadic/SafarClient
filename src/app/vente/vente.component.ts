@@ -105,6 +105,9 @@ getcontact() {
        detailVente.prixunitaire=this.test[i].prix;
        detailVente.idproduit=this.test[i].idproduit;
        detailVente.idvente=this.vente.idvente;
+       if (i=this.test.length){
+         this.router.navigate(['/reporting']);
+       }
 
       this.venteService.saveVenteProduit(detailVente)
         .subscribe( data => {
@@ -114,6 +117,9 @@ getcontact() {
         } );
     }
     console.log( 'Terminer ' );
+
+    localStorage.setItem('1','');
+
   }
 
 }
