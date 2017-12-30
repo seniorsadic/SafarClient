@@ -28,7 +28,6 @@ export class AgenceService {
     headers.append('Accept','application/json');
     headers.append('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
     return headers;
-
   }
   upload(agence:any) {
     return this.http.post("http://localhost/Safar18/web/app_dev.php/detailsUpload/",agence)
