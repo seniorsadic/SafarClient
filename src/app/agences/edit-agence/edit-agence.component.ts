@@ -21,7 +21,8 @@ export class EditAgenceComponent implements OnInit {
 
     this.agenceService.getAgence(this.idAgence)
       .subscribe(data=>{
-          this.agence=data},
+          this.agence=data
+        },
         err=>{console.log(err);
         }
       )

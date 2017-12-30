@@ -1,47 +1,48 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Safar</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <!--<cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>-->
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/image/logoo.png" style="height: 60px;width: 150px;" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-navicon"></span>
     </button>
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="nav navbar-nav mr-auto">
+          <li class="nav-item badge-info active">
+            <a class="nav-link nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/agence">Agence</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/produit">Produit</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/vente">Vente</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/depot">Dépot</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/rapport">Reporting</a>
+          </li>
+        </ul>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/agence">Agence</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/personne">Personne</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/produit">Produit</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/ota">Gestion des profils</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/vente">Vente</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/reporting">Reporting</a>
-        </li>
-      </ul>
-
-      <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
     </div>
   </nav>
 </header>
 
 <div class="container-fluid">
-<router-outlet>
+  <router-outlet>
 
-</router-outlet>
+  </router-outlet>
 </div>
-
 

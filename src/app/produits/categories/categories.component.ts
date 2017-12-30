@@ -13,11 +13,64 @@ export class CategoriesComponent implements OnInit {
 
   pageCategorie:any;
   pages:any;
+  settings:any = {
+    mode: 'external',
+    columns: {
+      idcategorie: {
+        title: 'Identifiant',
+        editable: true
+      },
+      designation: {
+        title: 'Designation'
+      }
+    },
+    add: {
+      addButtonContent: '<i class="fa fa-plus-circle" aria-hidden="true">Ajouter</i>',
+      createButtonContent: '<i class="fa fa-check-square">Créer</i>',
+      cancelButtonContent: '<i class="fa fa-minus-square">Annuler</i>',
+      confirmCreate: true
+    },
+    edit: {
+      editButtonContent: '<i class="glyphicon glyphicon-pencil"></i>',
+      saveButtonContent: '<i class="fa fa-check-square">Modifier</i>',
+      cancelButtonContent: '<i class="fa fa-minus-square">Annuler</i>',
+      confirmSave: true
+    },
+    delete: {
+      deleteButtonContent: '<i class="fa fa-trash"></i>',
+      confirmDelete: true
+    },
+    pager: {
+      display: true,
+      perPage: 3
+    },
+  };
+
   constructor(public http: Http, public produitService: ProduitService, public router:Router) { }
 
   ngOnInit() {
     this.doSearch();
   }
+  ajoutCate(event) {
+    this.router.navigate(['/new-categorie']);
+  }
+
+  modifCate(event) {
+    this.router.navigate(['/edit-categorie',event.data.idcategorie]);
+  }
+
+  deleteCate(event) {
+    let confirm = window.confirm("est vous sure?");
+    if (confirm == true) {
+      this.produitService.deleteCategorie(event.data['idcategorie'])
+        .subscribe(data => {
+          event.confirm.resolve();
+        }, err => {
+          console.log(err);
+        })
+    }
+  }
+
   doSearch() {  this.produitService.getCategories()
     .subscribe( data => {
       this.pageCategorie = data;
@@ -27,10 +80,8 @@ export class CategoriesComponent implements OnInit {
       console.log( err );
     } ); }
 
-
-  onEditCategorie(id:number){
+   onEditCategorie(id:number){
     this.router.navigate(['/edit-categorie',id]);
-
   }
 
   onDeleteCatergoie(c:Categorie) {

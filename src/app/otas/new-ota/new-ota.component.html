@@ -1,27 +1,33 @@
 <div class="row">
-
   <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/new-ota">Ajouter</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Analytics</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Export</a>
-      </li>
-    </ul>
-
+    <div class="panel panel-primary">
+      <div class="panel-heading">Gestion de l'agence</div>
+      <div class="panel-body">
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/agence"><font color="black">Agence</font></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/ville"><font color="black">Ville</font></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/personne"><font color="black">Personnel</font></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/ota"><font color="black">OTA</font></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/personne"><font color="black">Gestion des profils</font></a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
-
   <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
-
-
-    <h1>Nouvel Ota</h1>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Nouvel Ota </div>
+      <div class="panel-body">
+        <div class="table-responsive">
 
     <div class="container spacer">
       <div *ngIf="mode==1">
@@ -64,6 +70,9 @@
 
         </div>
 
+      </div>
+    </div>
+        </div>
       </div>
     </div>
   </main>

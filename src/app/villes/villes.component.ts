@@ -14,11 +14,48 @@ export class VillesComponent implements OnInit {
 
   pageVille: any;
   pages:any;
+  settings:any;
+
+
+
   constructor(public http: Http, public villeservice: VilleService, public router:Router) { }
 
   ngOnInit() {
     this.doSearch();
+    this.settings={
+      mode: 'inline',
+      columns: {
+        idville: {
+          title: 'Identifiant'
+        },
+        designation: {
+          title: 'Désignation'
+        },
+
+      },
+      add: {
+        addButtonContent: '<i class="fa fa-plus-circle" aria-hidden="true">Ajouter</i>',
+        createButtonContent: '<i class="fa fa-check-square"> Créer</i>',
+        cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
+        confirmCreate: true
+      },
+      edit: {
+        editButtonContent: '<i class="glyphicon glyphicon-pencil"> </i>',
+        saveButtonContent: '<i class="fa fa-check-square"> Modifier</i>',
+        cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
+        confirmSave: true
+      },
+      delete: {
+        deleteButtonContent: '<i class="glyphicon glyphicon-trash"></i>',
+        confirmDelete: true
+      },
+      pager: {
+        display: true,
+        perPage: 3
+      },
+    };
   }
+
   doSearch() {  this.villeservice.getVilles()
     .subscribe( data => {
       this.pageVille = data;
@@ -28,6 +65,26 @@ export class VillesComponent implements OnInit {
       console.log( err );
     } ); }
 
+  ajoutVille(event){
+    this.router.navigate(['/new-ville']);
+  }
+
+
+  modifVille(event){
+    this.router.navigate(['/edit-ville',event.data.idville]);
+  }
+
+  deleteVille(event){
+    let confirm = window.confirm("est vous sure?");
+    if (confirm == true) {
+      this.villeservice.deleteVille(event.data.idville)
+        .subscribe(data => {
+          event.confirm.resolve();
+        }, err => {
+          console.log(err);
+        })
+    }
+  }
 
   onEditVille(id:number){
     this.router.navigate(['/edit-ville',id]);
@@ -49,6 +106,7 @@ export class VillesComponent implements OnInit {
         })
     }
   }
+
   gotoPages(i){
     this.pages=i;
     this.doSearch();

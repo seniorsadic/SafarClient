@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Agence} from "../../../model/model.agence";
 import {AgenceService} from "../../../services/agence.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,7 +14,7 @@ export class NewAgenceComponent implements OnInit {
   agence: Agence=new Agence();
   pageVille:any;
 
-  constructor(public agenceService:AgenceService) { }
+  constructor(public agenceService:AgenceService,public router:Router) { }
 
   ngOnInit() {
     this.getVilles();
@@ -24,7 +25,7 @@ export class NewAgenceComponent implements OnInit {
       .subscribe( data => {
         this.agence=data;
         this.mode=2;
-
+        this.router.navigate(['/agence']);
       }, err => {
         console.log( err );
       } );

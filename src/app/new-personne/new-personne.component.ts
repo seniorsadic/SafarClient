@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Personne} from "../../model/model.personne";
 import {ContactsService} from "../../services/contacts.service";
 import {Agence} from "../../model/model.agence";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-personne',
@@ -13,7 +14,7 @@ mode:number=1;
   personne: Personne=new Personne();
   pageAgence:any;
   agence:any;
-  constructor( public personneService:ContactsService) { }
+  constructor( public personneService:ContactsService,public router:Router) { }
 
   ngOnInit() {
     this.getAgences();
@@ -24,7 +25,7 @@ mode:number=1;
       .subscribe( data => {
         this.personne=data;
          this.mode=2;
-
+        this.router.navigate(['/personne']);
       }, err => {
         console.log( err );
       } );

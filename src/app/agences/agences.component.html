@@ -1,29 +1,41 @@
 <div class="row">
 
   <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
-    <ul class="nav nav-pills flex-column">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Gestion de l'agence</div>
+      <div class="panel-body">
+        <ul class="nav nav-pills flex-column">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/agence"><font color="black">Agence</font></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/new-agence">Ajouter</a>
+        <a class="nav-link" routerLink="/ville"><font color="black">Ville</font></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Analytics</a>
+        <a class="nav-link" routerLink="/personne"><font color="black">Personnel</font></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Export</a>
+        <a class="nav-link" routerLink="/ota"><font color="black">OTA</font></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/personne"><font color="black">Gestion des profils</font></a>
       </li>
     </ul>
-
+</div>
+</div>
   </nav>
 
   <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
 
+    <div class="panel panel-primary">
+      <div class="panel-heading">Liste des agences</div>
+      <div class="panel-body">
+        <div class="table-responsive">
 
-    <h1>Liste des agences</h1>
+    <ng2-smart-table [settings]="settings" (create)="ajout($event)" [source]="pageAgence" (edit)="edit($event)"
+                     (delete)="delete($event)"></ng2-smart-table>
 
-    <div class="table-responsive">
+   <!-- <div class="table-responsive">
 
 
           <table  class="table table-striped">
@@ -51,9 +63,10 @@
               </li>
             </ul>
           </div>
+        </div>-->
         </div>
-
-
+      </div>
+    </div>
   </main>
 </div>
 

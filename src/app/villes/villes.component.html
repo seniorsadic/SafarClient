@@ -1,57 +1,69 @@
 <div class="row">
 
   <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Gestion de l'agence</div>
+      <div class="panel-body">
     <ul class="nav nav-pills flex-column">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/agence"><font color="black">Agence</font></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/new-ville">Ajouter</a>
+        <a class="nav-link" routerLink="/ville"><font color="black">Ville</font></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Analytics</a>
+        <a class="nav-link" routerLink="/personne"><font color="black">Personnel</font></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Export</a>
+        <a class="nav-link" routerLink="/ota"><font color="black">OTA</font></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/personne"><font color="black">Gestion des profils</font></a>
       </li>
     </ul>
-
+      </div>
+    </div>
   </nav>
 
   <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
 
-
-    <h1>Liste des villes</h1>
-
+    <div class="panel panel-primary">
+      <div class="panel-heading">Liste des villes</div>
+      <div class="panel-body">
+        <div class="table-responsive">
     <div class="table-responsive">
 
+      <ng2-smart-table [settings]="settings" [source]="pageVille" (create)="ajoutVille($event)"
+                       (edit)="modifVille($event)" (delete)="deleteVille($event)"></ng2-smart-table>
 
-      <table  class="table table-striped">
-        <thead>
-        <tr>
-           <th>Ville</th>
-        </tr>
-        </thead>
-        <tr *ngFor="let a of pageVille">
-          <td>{{a.designation}} </td>
-          <td>
-            <a (click)="onEditVille(a.idville)" class="clickable"> Modifier</a>
-          </td>
-          <td>
-            <a (click)="onDeleteVille(a)" class="clickable"> Supprimer</a>
-          </td>
-        </tr>
-      </table>
+      <!--<table  class="table table-striped">-->
+        <!--<thead>-->
+        <!--<tr>-->
+           <!--<th>Ville</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tr *ngFor="let a of pageVille">-->
+          <!--<td>{{a.designation}} </td>-->
+          <!--<td>-->
+            <!--<a (click)="onEditVille(a.idville)" class="clickable"> Modifier</a>-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--<a (click)="onDeleteVille(a)" class="clickable"> Supprimer</a>-->
+          <!--</td>-->
+        <!--</tr>-->
+      <!--</table>-->
 
-      <div class="container">
-        <ul class="nav nav-pills">
-          <li [ngClass]="{'active':i==page}" *ngFor=" let p of pages;let i=index">
-            <a class="clickable" (click)="gotoPages(i)">{{i}}</a>
-          </li>
-        </ul>
+      <!--<div class="container">-->
+        <!--<ul class="nav nav-pills">-->
+          <!--<li [ngClass]="{'active':i==page}" *ngFor=" let p of pages;let i=index">-->
+            <!--<a class="clickable" (click)="gotoPages(i)">{{i}}</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    </div>
+        </div>
       </div>
     </div>
-
 
   </main>
 </div>

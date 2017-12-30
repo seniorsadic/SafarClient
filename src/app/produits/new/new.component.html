@@ -1,33 +1,30 @@
+<!--<p-dialog header="Title" [(visible)]="display">-->
 <div class="row">
 
+
   <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Overview </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active"  routerLink="/new-produit">Ajouter<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/produit">Lister</a>
-      </li>
-    </ul>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Articles</div>
+      <div class="panel-body">
+        <ul class="nav nav-pills flex-column">
 
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/categorie">Liste Categorie</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/new-categorie">Nouvelle Catégorie</a>
-      </li>
-    </ul>
-
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/produit"><font color="black">Produits</font></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/categorie"><font color="black">Categorie</font></a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
   <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 sidebar">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Nouveau Produit</div>
+      <div class="panel-body">
+        <div class="table-responsive">
 
-
-    <h1 class="text-center">Nouveau Produit</h1>
 
     <div class="container spacer">
       <div *ngIf="mode==1">
@@ -99,11 +96,18 @@
 
       </div>
     </div>
+        </div>
+      </div>
+    </div>
   </main>
 </div>
 
 
+<!--
+</p-dialog>
 
+<button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show"></button>
+-->
 
 
 
