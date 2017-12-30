@@ -150,6 +150,13 @@ export class VenteComponent implements OnInit {
        detailVente.prixunitaire=this.test[i].prix;
        detailVente.idproduit=this.test[i].idproduit;
        detailVente.idvente=this.vente.idvente;
+<<<<<<< HEAD
+       if (i=this.test.length){
+         this.router.navigate(['/reporting']);
+       }
+
+=======
+>>>>>>> 973a849a06ad8b839ce0e6b036adaf6c69b506cb
       this.venteService.saveVenteProduit(detailVente)
         .subscribe( data => {
           console.log( data );
@@ -158,6 +165,9 @@ export class VenteComponent implements OnInit {
         } );
     }
     console.log( 'Terminer ' );
+
+    localStorage.setItem('1','');
+
   }
 
 }

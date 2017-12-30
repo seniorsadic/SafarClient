@@ -23,7 +23,11 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "@types/jquery": "^3.2.16",
+<<<<<<< HEAD
+    "angular-async-local-storage": "^3.1.0",
+=======
     "angular-font-awesome": "^3.0.3",
+>>>>>>> 973a849a06ad8b839ce0e6b036adaf6c69b506cb
     "bootstrap": "^3.3.7",
     "chart.js": "^2.7.1",
     "core-js": "^2.4.1",
