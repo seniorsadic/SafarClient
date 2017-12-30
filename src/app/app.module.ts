@@ -41,8 +41,11 @@ import { ProductsImageComponent } from './vente/products-image/products-image.co
 import { ProductsPriceComponent } from './vente/products-price/products-price.component';
 import { ProductsDepartmentComponent } from './vente/products-department/products-department.component';
 import {VenteService} from "../services/vente.service";
+
+//import {AsyncLocalStorageModule} from "angular-async-local-storage";
+
 import {Ng2SmartTableModule} from "ng2-smart-table";
-import {AngularFontAwesomeModule} from "angular-font-awesome";
+//import {AngularFontAwesomeModule} from "angular-font-awesome";
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -106,10 +109,11 @@ const appRoutes: Routes = [
     ProductsPriceComponent,
     ProductsDepartmentComponent,
 
+   // AsyncLocalStorageModule
 
   ],
   imports: [
-    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule, AngularFontAwesomeModule
+    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule, //AngularFontAwesomeModule
   ],
   providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService],
   bootstrap: [AppComponent]
