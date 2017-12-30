@@ -1,6 +1,6 @@
 
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http,Headers} from '@angular/http';
 import {Agence} from "../model/model.agence";
 
 @Injectable()
@@ -21,6 +21,17 @@ export class AgenceService {
 
   saveAgence(agence:Agence) {
     return this.http.post("http://localhost/Safar18/web/app_dev.php/agence/",agence)
+      .map(resp => resp.json());
+  }
+  private getHeaders(){
+    let headers=new Headers();
+    headers.append('Accept','application/json');
+    headers.append('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+    return headers;
+
+  }
+  upload(agence:any) {
+    return this.http.post("http://localhost/Safar18/web/app_dev.php/detailsUpload/",agence)
       .map(resp => resp.json());
   }
 
