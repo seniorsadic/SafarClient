@@ -8,6 +8,10 @@ import {Ota} from "../model/model.ota";
 export class OtaService {
   constructor(public http: Http) {}
 
+  rapport(idoperateur: string) {
+    return this.http.get("http://localhost/Safar18/web/app_dev.php/rapportOperateur/"+idoperateur)
+      .map(resp => resp.json());
+  }
 
   getOtas() {
     return this.http.get("http://localhost/Safar18/web/app_dev.php/otas")

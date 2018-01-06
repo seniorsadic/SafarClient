@@ -151,7 +151,7 @@ export class VenteComponent implements OnInit {
        detailVente.idproduit=this.test[i].idproduit;
        detailVente.idvente=this.vente.idvente;
 
-       if (i=this.test.length){
+       if (i==this.test.length){
          this.router.navigate(['/reporting']);
        }
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Http} from "@angular/http";
+import {RapportService} from "../../../services/rapport.service";
+import {OtaService} from "../../../services/ota.service";
 
 @Component({
   selector: 'app-rapport',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RapportComponent implements OnInit {
 
-  constructor() { }
+  listeTransfert: any;
+  nombre:number;
+  commission: number=0;
+  date:string;
+
+  constructor(public http: Http, public rapportService: OtaService) { }
 
   ngOnInit() {
+    this.gestionTransfert();
+  }
+
+  gestionTransfert(){
+    this.rapportService.rapport('3')
+      .subscribe( data => {
+        this.listeTransfert = data;
+        this.nombre=this.listeTransfert.length;
+        console.log( this.listeTransfert );
+        for(var i =0; i < this.listeTransfert.length; i++){
+          if(i==0)
+            this.date=this.listeTransfert[i].idoperation.date;
+          this.commission+=this.listeTransfert[i].commission;
+        }
+
+      }, err => {
+        console.log( err );
+      } );
   }
 
   // lineChart

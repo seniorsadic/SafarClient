@@ -23,7 +23,7 @@ export class VillesComponent implements OnInit {
   ngOnInit() {
     this.doSearch();
     this.settings={
-      mode: 'inline',
+      mode: 'external',
       columns: {
         idville: {
           title: 'Identifiant'
