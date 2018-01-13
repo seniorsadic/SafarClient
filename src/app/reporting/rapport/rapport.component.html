@@ -44,15 +44,85 @@
     <div class="panel panel-primary">
       <div class="panel-heading">Les Raports</div>
       <div class="panel-body">
-  <p>Test</p>
+
+        <h1>Rapport Orange money</h1>
+
+        <div class="form-group">
+          <input class="form-control fa fa-shopping-cart" type="date" (click)="reactualiser()" >
+        </div>
+        <div class="table-responsive" >
+          <table class="table table-bordered">
+            <tr class="alert-primary">
+              <th></th>
+              <th colspan="2">Nombre</th>
+              <th colspan="2">Montant (FCFA)</th>
+            </tr>
+            <tr>
+              <td>Echec</td>
+              <td colspan="2">
+                {{nombreEchec}}
+              </td>
+              <td colspan="2">0</td>
+            </tr>
+            <tr>
+              <td rowspan="2">Réussi</td>
+
+              <td class="alert-primary">
+                Dépot
+              </td>
+              <td class="alert-primary">
+                Retrait
+              </td>
+              <td class="alert-primary">
+                Dépot
+              </td>
+              <td class="alert-primary">
+                Retrait
+              </td>
+            </tr>
+            <tr>
+              <td>{{nombreEnvoi}}</td>
+              <td>{{nombreRetrait}}</td>
+              <td>{{montantEnvoi}}</td>
+              <td>{{montantRetrait}}</td>
+            </tr>
+            <tr>
+              <td class="bg-danger">Total </td>
+              <td colspan="2" style="text-align: center;">{{nombreRetrait+nombreEnvoi}}</td>
+              <td colspan="2" style="text-align: center;" class="align-bottom">{{montantRetrait+montantEnvoi}}</td>
+            </tr>
+          </table>
+        </div>
+       <!-- <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"> Rapport sur les transactions</h5>
+            <p class="card-text">
+              Nombre de transfert : {{nombre}}
+              Réussit : {{nombreReussit}}
+              Echec : {{nombreEchec}}
+            </p>
+          </div>
+        </div>-->
+
+       <!-- <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> Rapport sur les transactions</h5>
+              <p class="card-text">
+                Nombre de transfert : {{nombre}}
+              </p>
+            </div>
+          </div>
+        </div>
 
       <div>
         <p> Date : {{date}}</p>
         <p> Nombre de transfert : {{nombre}}</p>
         <p> Commision : {{commission}} FCFA</p>
-      </div>
+        <p> Montant : {{montant}} FCFA</p>
+      </div>-->
 
-      <div class="col-md-6">
+     <!-- <div class="col-md-6">
 
         <canvas baseChart
                 [data]="lineChartData"
@@ -72,7 +142,7 @@
       </div>
       <div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
         <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
-      </div>
+      </div>-->
       </div>
     </div>
   </main>

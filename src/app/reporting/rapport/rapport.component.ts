@@ -11,8 +11,15 @@ import {OtaService} from "../../../services/ota.service";
 export class RapportComponent implements OnInit {
 
   listeTransfert: any;
-  nombre:number;
+  nombre:number=0;
+  nombreReussit:number=0;
+  nombreEchec:number=0;
+  nombreEnvoi:number=0;
+  montantEnvoi: number=0;
+  nombreRetrait:number=0;
+  montantRetrait: number=0;
   commission: number=0;
+  montant: number=0;
   date:string;
 
   constructor(public http: Http, public rapportService: OtaService) { }
@@ -28,14 +35,33 @@ export class RapportComponent implements OnInit {
         this.nombre=this.listeTransfert.length;
         console.log( this.listeTransfert );
         for(var i =0; i < this.listeTransfert.length; i++){
+          console.log( this.listeTransfert[i].idoperation.statut );
           if(i==0)
             this.date=this.listeTransfert[i].idoperation.date;
+          if((this.listeTransfert[i].idoperation.statut).localeCompare('Succès')==0){
+            this.nombreReussit+=1;
+            if((this.listeTransfert[i].idoperation.service).localeCompare('Cash Out')==0){
+              this.nombreRetrait+=1;
+              this.montantRetrait+=this.listeTransfert[i].idoperation.montant;
+            }
+            else {
+              this.nombreEnvoi+=1;
+              this.montantEnvoi+=this.listeTransfert[i].idoperation.montant;
+            }
+            this.montant+=this.listeTransfert[i].idoperation.montant;
+          }
+          else
+            this.nombreEchec+=1;
           this.commission+=this.listeTransfert[i].commission;
         }
 
       }, err => {
         console.log( err );
       } );
+  }
+
+  reactualiser(){
+
   }
 
   // lineChart
