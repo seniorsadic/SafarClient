@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {RapportService} from "../../../services/rapport.service";
 import {OtaService} from "../../../services/ota.service";
 import {CurrencyPipe} from "@angular/common";
+import { LOCALE_ID } from '@angular/core';
 
 @Component({
   selector: 'app-rapport',

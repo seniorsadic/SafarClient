@@ -41,6 +41,7 @@ import { ProductsImageComponent } from './vente/products-image/products-image.co
 import { ProductsPriceComponent } from './vente/products-price/products-price.component';
 import { ProductsDepartmentComponent } from './vente/products-department/products-department.component';
 import {VenteService} from "../services/vente.service";
+import { LOCALE_ID } from '@angular/core';
 
 //import {AsyncLocalStorageModule} from "angular-async-local-storage";
 
@@ -115,7 +116,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule, //AngularFontAwesomeModule
   ],
-  providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService],
+  providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService,{provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -86,15 +86,15 @@
             <tr>
               <td>{{nombreEnvoi}}</td>
               <td>{{nombreRetrait}}</td>
-              <td>{{montantEnvoi|currency:'XOF'}}</td>
-              <td>{{montantRetrait|currency:"XOF"}}</td>
-              <td>{{commission|currency:"XOF"}}</td>
+              <td>{{montantEnvoi|currency:'XOF':true:'2.2-4'}}</td>
+              <td>{{montantRetrait|currency:"XOF":true:'2.2-4'}}</td>
+              <td>{{commission|currency:"XOF":true:'2.2-4'}}</td>
             </tr>
             <tr>
               <td class="bg-danger">Total </td>
               <td colspan="2" style="text-align: center;">{{nombreRetrait+nombreEnvoi}}</td>
-              <td colspan="2" style="text-align: center;" class="align-bottom">{{montantRetrait+montantEnvoi|currency:"XOF"}}</td>
-              <td colspan="2" style="text-align: center;" class="align-bottom">{{commission|currency:'XOF'}}</td>
+              <td colspan="2" style="text-align: center;" class="align-bottom">{{montantRetrait+montantEnvoi|currency:"XOF":true:'2.2-4'}}</td>
+              <td colspan="2" style="text-align: center;" class="align-bottom">{{commission|currency:'XOF':true:'2.2-4'}}</td>
             </tr>
           </table>
         </div>
