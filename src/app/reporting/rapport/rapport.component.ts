@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import {RapportService} from "../../../services/rapport.service";
 import {OtaService} from "../../../services/ota.service";
+import {CurrencyPipe} from "@angular/common";
 
 @Component({
   selector: 'app-rapport',
