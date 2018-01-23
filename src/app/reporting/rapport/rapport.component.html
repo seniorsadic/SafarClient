@@ -5,35 +5,12 @@
     <div class="panel-heading">OTA</div>
     <div class="panel-body">
     <ul class="nav nav-pills flex-column">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/"><font color="black">Wari</font></a>
+
+      <li class="nav-item" *ngFor="let a of listeOTA">
+        <a class="nav-link" (click)="gestionTransfert(a)"><font color="black">{{a.designation}}</font></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">Ria</font></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">Joni Joni</font></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">Microcred</font></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">MoneyGram</font></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">Western Union</font></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">OrangeMoney</font></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">Informatiques</font></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">Téléphoniques</font></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/depot"><font color="black">cartes crédits</font></a>
+        <a class="nav-link" ><font color="black">Vente</font></a>
       </li>
     </ul>
     </div>

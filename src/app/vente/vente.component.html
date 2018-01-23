@@ -9,7 +9,7 @@
       <div class="panel-body">
     <ul class="nav nav-pills flex-column">
       <li class="nav-item"  *ngFor="let a of category">
-        <a class="nav-link" routerLink="/new-produit"><font color="black">{{a.designation}}</font></a>
+        <a class="nav-link" (click)="chargerProduit(a.idcategorie)" ><font color="black">{{a.designation}}</font></a>
       </li>
       <!--<li class="nav-item">
         <a class="nav-link" routerLink="/produit">Téléphoniques</a>

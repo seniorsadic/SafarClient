@@ -25,6 +25,11 @@ export class ProduitService {
       .map(resp => resp.json());
   }
 
+  getProduitByCategorie( id:number) {
+    return this.http.get("http://localhost/Safar18/web/app_dev.php/produitbycategorie/"+id)
+      .map(resp => resp.json());
+  }
+
   getCategorie( id:number) {
     return this.http.get("http://localhost/Safar18/web/app_dev.php/categorie/"+id)
       .map(resp => resp.json());

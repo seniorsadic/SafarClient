@@ -36,10 +36,19 @@ export class VenteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.doSearch();
+ //   this.doSearch();
     this.catego();
-
   }
+
+  chargerProduit(id:number){
+    this.produitservice.getProduitByCategorie(id)
+      .subscribe( data => {
+        this.pageProduit = data;
+      }, err => {
+        console.log( err );
+      } );
+  }
+
   catego() { this.produitservice.getCategories()
     .subscribe( data => {
       this.category = data;

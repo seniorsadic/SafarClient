@@ -13,6 +13,7 @@ import { LOCALE_ID } from '@angular/core';
 export class RapportComponent implements OnInit {
 
   listeTransfert: any;
+  listeOTA:any;
   nombre:number=0;
   nombreReussit:number=0;
   nombreEchec:number=0;
@@ -23,19 +24,38 @@ export class RapportComponent implements OnInit {
   commission: number=0;
   montant: number=0;
   date:string;
+  operateur:any;
 
   constructor(public http: Http, public rapportService: OtaService) { }
 
   ngOnInit() {
-    this.gestionTransfert();
+    this.chargerOTA();
   }
 
-  gestionTransfert(){
-    this.rapportService.rapport('3')
+  chargerOTA(){
+    this.rapportService.getOtas()
+      .subscribe( data => {
+        this.listeOTA = data;
+      }, err => {
+        console.log( err );
+      } );
+  }
+
+
+  gestionTransfert(id:any){
+    this.operateur=id;
+    this.rapportService.rapport(id.idoperateur)
       .subscribe( data => {
         this.listeTransfert = data;
         this.nombre=this.listeTransfert.length;
-        console.log( this.listeTransfert );
+        this.nombreReussit=0;
+        this.nombreEchec=0;
+        this.nombreEnvoi=0;
+        this.montantEnvoi=0;
+        this.nombreRetrait=0;
+        this.montantRetrait=0;
+        this.commission=0;
+        this.montant=0;
         for(var i =0; i < this.listeTransfert.length; i++){
           console.log( this.listeTransfert[i].idoperation.statut );
           if(i==0)

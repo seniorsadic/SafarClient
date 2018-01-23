@@ -7,6 +7,11 @@ import {Agence} from "../model/model.agence";
 export class AgenceService {
   constructor(public http: Http) {}
 
+  public  uploadImage(formdata: any ) {
+    let _url: string = 'http://localhost/Safar18/web/fileUpload.php';
+    return this.http.post(_url, formdata) ;
+
+  }
 
   getAgences() {
     return this.http.get("http://localhost/Safar18/web/app_dev.php/agences")

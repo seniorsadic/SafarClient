@@ -39,6 +39,9 @@ pages: any;
         nom: {
           title: 'Nom'
         },
+        login: {
+          title: 'Login'
+        },
         idagence: {
           title: 'Agence',
           type: 'html',

@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
 import {ProduitService} from "../../services/produit.service";
 import {Produit} from "../../model/model.produit";
+import {AsyncLocalStorage} from "angular-async-local-storage";
+import {LoginService} from "../../services/login.service";
 
 
 @Component({
@@ -16,14 +18,17 @@ export class ProduitsComponent implements OnInit {
   pages:any;
   settings:any;
   display: boolean = false;
+  d:any;
 
   showDialog() {
     this.display = true;
   }
-  constructor(public http: Http, public produitservice: ProduitService, public router:Router) { }
+  constructor(public http: Http, public produitservice: ProduitService, public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
 
+    console.log(this.loginService.utilisateur());
+    console.log(this.loginService.afficherUtilisateur());
       this.doSearch();
       this.settings={
         mode: 'external',

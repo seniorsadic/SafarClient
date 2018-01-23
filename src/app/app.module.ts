@@ -46,6 +46,8 @@ import { LOCALE_ID } from '@angular/core';
 //import {AsyncLocalStorageModule} from "angular-async-local-storage";
 
 import {Ng2SmartTableModule} from "ng2-smart-table";
+import {AsyncLocalStorageModule} from "angular-async-local-storage";
+import {LoginService} from "../services/login.service";
 //import {AngularFontAwesomeModule} from "angular-font-awesome";
 
 const appRoutes: Routes = [
@@ -114,9 +116,9 @@ const appRoutes: Routes = [
 
   ],
   imports: [
-    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule, //AngularFontAwesomeModule
+    BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), FormsModule, ChartsModule,FileUploadModule,Ng2SmartTableModule, AsyncLocalStorageModule //AngularFontAwesomeModule
   ],
-  providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService,{provide: LOCALE_ID, useValue: 'fr-FR'}],
+  providers: [ContactsService,AgenceService,VilleService,ProduitService,OtaService,VenteService,LoginService,{provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

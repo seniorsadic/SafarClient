@@ -30,23 +30,18 @@ export class DepotComponent implements OnInit {
 
   affiche() {
     console.log(this.uploader);
-    let formData=new FormData();
-    formData.append('file',this.uploader.queue[0]._file,this.uploader.queue[0]._file.name);
-    this.agence.upload(formData)
-      .subscribe( data => {
-
-      }, err => {
-        console.log( err );
-      } );
-    // let reader = new FileReader();
-    // reader.readAsDataURL(this.uploader.queue[0]._file);
-    // reader.onload = () => {
-    //   this.form.get('avatar').setValue({
-    //     filename: file.name,
-    //     filetype: file.type,
-    //     value: reader.result.split(',')[1]
-    //   })
-    // };
+    let formData = new FormData();
+    for (var i = 0; i < this.uploader.queue.length; i++) {
+      formData.append('selectFile', this.uploader.queue[i]._file, this.uploader.queue[i]._file.name);
+      this.agence.uploadImage(formData)
+        .subscribe(data => {
+        //  this.uploader.queue[i].isSuccess=true;
+        //  this.uploader.queue[i].progress=100;
+          this.uploader.progress=100;
+        }, err => {
+          console.log(err);
+        });
+    }
   }
 
 }

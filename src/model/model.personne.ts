@@ -5,5 +5,7 @@ export  class Personne{
   prenoms:string="";
   nom:string="";
   numero:string="";
+  login:string="";
+  password:string="";
   idagence:Agence;
 }
