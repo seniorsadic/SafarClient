@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Personne} from "../../model/model.personne";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ContactsService} from "../../services/contacts.service";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-edit-personne',
@@ -13,11 +14,14 @@ personne:Personne=new Personne();
 mode:number=1;
 idPersonne:number;
   pageAgence:any;
-  constructor( public activatedRoute:ActivatedRoute, public personneService:ContactsService, public router:Router) {
+  constructor( public activatedRoute:ActivatedRoute, public personneService:ContactsService, public router:Router, public loginService:LoginService) {
    this.idPersonne=activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.personneService.getContact(this.idPersonne)
       .subscribe(data=>{
       this.personne=data},

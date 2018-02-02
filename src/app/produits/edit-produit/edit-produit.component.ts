@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Produit} from "../../../model/model.produit";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProduitService} from "../../../services/produit.service";
+import {LoginService} from "../../../services/login.service";
 @Component({
   selector: 'app-edit-produit',
   templateUrl: './edit-produit.component.html',
@@ -13,11 +14,14 @@ export class EditProduitComponent implements OnInit {
   idProduit:number;
   pageAgence:any;
   pageCategorie:any;
-  constructor(public activatedRoute:ActivatedRoute, public produitService:ProduitService, public router:Router) {
+  constructor(public activatedRoute:ActivatedRoute, public produitService:ProduitService, public router:Router, public loginService:LoginService) {
     this.idProduit=activatedRoute.snapshot.params['id']
   }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.produitService.getProduit(this.idProduit)
       .subscribe(data=>{
           this.produit=data},

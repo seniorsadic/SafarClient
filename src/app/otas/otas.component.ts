@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
 import {OtaService} from "../../services/ota.service";
 import {Ota} from "../../model/model.ota";
+import {LoginService} from "../../services/login.service";
 @Component({
   selector: 'app-otas',
   templateUrl: './otas.component.html',
@@ -13,9 +14,12 @@ export class OtasComponent implements OnInit {
   pageOta: any;
   pages:any;
   settings:any;
-  constructor(public http: Http, public otaservice: OtaService, public router:Router) { }
+  constructor(public http: Http, public otaservice: OtaService, public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.doSearch();
     this.settings={
       mode: 'inline',

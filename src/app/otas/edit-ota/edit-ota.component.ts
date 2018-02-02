@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Ota} from "../../../model/model.ota";
 import {ActivatedRoute, Router} from "@angular/router";
 import {OtaService} from "../../../services/ota.service";
+import {LoginService} from "../../../services/login.service";
 
 @Component({
   selector: 'app-edit-ota',
@@ -14,11 +15,14 @@ export class EditOtaComponent implements OnInit {
   mode:number=1;
   idOta:number;
 
-  constructor(public activatedRoute:ActivatedRoute, public otaService:OtaService, public router:Router) {
+  constructor(public activatedRoute:ActivatedRoute, public otaService:OtaService, public router:Router, public loginService:LoginService) {
     this.idOta=activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.otaService.getOta(this.idOta)
       .subscribe(data=>{
           this.ota=data},

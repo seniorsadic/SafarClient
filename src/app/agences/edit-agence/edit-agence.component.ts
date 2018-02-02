@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Agence} from "../../../model/model.agence";
 import {AgenceService} from "../../../services/agence.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {LoginService} from "../../../services/login.service";
 
 @Component({
   selector: 'app-edit-agence',
@@ -13,12 +14,14 @@ export class EditAgenceComponent implements OnInit {
   mode:number=1;
   idAgence:number;
   pageVille:any;
-  constructor(public activatedRoute:ActivatedRoute, public agenceService:AgenceService, public router:Router) {
+  constructor(public activatedRoute:ActivatedRoute, public agenceService:AgenceService, public router:Router, public loginService:LoginService) {
     this.idAgence=activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
-
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.agenceService.getAgence(this.idAgence)
       .subscribe(data=>{
           this.agence=data

@@ -8,11 +8,57 @@
             aria-expanded="false" aria-label="Toggle navigation">
       <span class="fa fa-navicon"></span>
     </button>
-    <div class="container-fluid">
+    <div class="container-fluid" >
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="nav navbar-nav mr-auto">
+        <ul class="nav navbar-nav mr-auto" *ngIf="loginService.getRoles()=='ADMIN'">
           <li class="nav-item badge-info active">
-            <a class="nav-link nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+            <a class="nav-link nav-link" href="#">Accueil ADMIN<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/agence">Agence</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/produit">Produit</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/vente">Vente</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/depot">Dépot</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/rapport">Reporting</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" (click)="loginService.deconnection()">Deconnection</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav mr-auto" *ngIf="loginService.getRoles()=='MANAGER'">
+          <li class="nav-item badge-info active">
+            <a class="nav-link nav-link" href="#">Accueil MANAGER <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/agence">Agence</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/produit">Produit</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/vente">Vente</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/depot">Dépot</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" routerLink="/rapport">Reporting</a>
+          </li>
+          <li class="nav-item badge-info">
+            <a class="nav-link" (click)="loginService.deconnection()">Deconnection</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav mr-auto" *ngIf="loginService.getRoles()=='AGENT'">
+          <li class="nav-item badge-info active">
+            <a class="nav-link nav-link" href="#">Accueil AGENT<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item badge-info">
             <a class="nav-link" routerLink="/agence">Agence</a>

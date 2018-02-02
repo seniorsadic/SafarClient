@@ -26,9 +26,9 @@ export class ProduitsComponent implements OnInit {
   constructor(public http: Http, public produitservice: ProduitService, public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
-
-    console.log(this.loginService.utilisateur());
-    console.log(this.loginService.afficherUtilisateur());
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
       this.doSearch();
       this.settings={
         mode: 'external',
@@ -64,7 +64,7 @@ export class ProduitsComponent implements OnInit {
           }
         },
         add: {
-          addButtonContent: '<i class="fa fa-plus-circle" aria-hidden="true">Ajouter</i>',
+          addButtonContent: '<i class="fa fa-plus-circle" aria-hidden="true"> Ajouter</i>',
           createButtonContent: '<i class="fa fa-check-square"> Créer</i>',
           cancelButtonContent: '<i class="fa fa-minus-square"> Annuler</i>',
           confirmCreate: true
@@ -81,7 +81,7 @@ export class ProduitsComponent implements OnInit {
         },
         pager: {
           display: true,
-          perPage: 5
+          perPage: 10
         },
       };
   }

@@ -15,31 +15,26 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
   //  let user: User = { firstName: 'Henri', lastName: 'Bergson' };
-
-
+    if (this.loginService.getConnect()=='true'){
+      this.router.navigate(['/agence']);
+    }
   }
 
   verifier(){
     let login=this.elem.nativeElement.querySelector('#username').value;
     let pass=this.elem.nativeElement.querySelector('#pass').value;
-
-    if(this.loginService.verifier(login,pass)) {
-      this.router.navigate(['/produit']);
-    }else{
-      this.erreur=1;
-    }
-
-
-   /* if (login.localeCompare('Aziz')==0 && pass.localeCompare('Fall')==0){
-      this.syn.setItem('user', 'Aziz').subscribe(() => {});
-       localStorage.setItem('test', 'Aziz');
-      this.router.navigate(['/produit']);
-    }
-    else{
-      this.erreur=1;
-    }*/
-    console.log(login+' '+pass)
-
+    console.log('Test');
+    this.loginService.getUtilisateurByLoginAndPassword(login,pass).subscribe( data => {
+      console.log('Bien');
+      if (data != null) {
+        this.loginService.verifier(data);
+        this.router.navigate(['/produit']);
+      } else {
+        this.erreur=1;
+      }
+    }, err => {
+      console.log( err );
+    } );
   }
 
 }

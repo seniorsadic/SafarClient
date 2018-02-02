@@ -4,6 +4,8 @@ import {RapportService} from "../../../services/rapport.service";
 import {OtaService} from "../../../services/ota.service";
 import {CurrencyPipe} from "@angular/common";
 import { LOCALE_ID } from '@angular/core';
+import {Router} from "@angular/router";
+import {LoginService} from "../../../services/login.service";
 
 @Component({
   selector: 'app-rapport',
@@ -26,9 +28,12 @@ export class RapportComponent implements OnInit {
   date:string;
   operateur:any;
 
-  constructor(public http: Http, public rapportService: OtaService) { }
+  constructor(public http: Http, public rapportService: OtaService,public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.chargerOTA();
   }
 

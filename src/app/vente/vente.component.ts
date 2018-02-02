@@ -10,6 +10,7 @@ import {Personne} from "../../model/model.personne";
 import {ContactsService} from "../../services/contacts.service";
 import {VenteService} from "../../services/vente.service";
 import {DetailVente} from "../../model/model.detailvente";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-vente',
@@ -29,13 +30,16 @@ export class VenteComponent implements OnInit {
 
 
   constructor(public http: Http, public produitservice: ProduitService, public router:Router, public contactService:ContactsService
-    , public venteService:VenteService) {
+    , public venteService:VenteService, public loginService:LoginService) {
     this.test=[];
     this.test1=[];
     this.total=0;
   }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
  //   this.doSearch();
     this.catego();
   }

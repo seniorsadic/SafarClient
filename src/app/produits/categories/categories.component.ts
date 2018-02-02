@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
 import {ProduitService} from "../../../services/produit.service";
 import {Categorie} from "../../../model/model.categorie";
+import {LoginService} from "../../../services/login.service";
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -46,9 +47,12 @@ export class CategoriesComponent implements OnInit {
     },
   };
 
-  constructor(public http: Http, public produitService: ProduitService, public router:Router) { }
+  constructor(public http: Http, public produitService: ProduitService, public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.doSearch();
   }
   ajoutCate(event) {

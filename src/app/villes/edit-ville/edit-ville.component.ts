@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Ville} from "../../../model/model.ville";
 import {ActivatedRoute, Router} from "@angular/router";
 import {VilleService} from "../../../services/ville.service";
+import {LoginService} from "../../../services/login.service";
 
 @Component({
   selector: 'app-edit-ville',
@@ -12,11 +13,14 @@ export class EditVilleComponent implements OnInit {
   ville:Ville=new Ville();
   mode:number=1;
   idVille:number;
-  constructor(public activatedRoute:ActivatedRoute, public villeService:VilleService, public router:Router) {
+  constructor(public activatedRoute:ActivatedRoute, public villeService:VilleService, public router:Router, public loginService:LoginService) {
     this.idVille=activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.villeService.getVille(this.idVille)
       .subscribe(data=>{
           this.ville=data},

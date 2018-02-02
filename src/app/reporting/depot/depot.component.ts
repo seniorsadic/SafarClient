@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import {AgenceService} from "../../../services/agence.service";
+import {Router} from "@angular/router";
+import {LoginService} from "../../../services/login.service";
 
 const URL = 'http://localhost/Safar18/web/app_dev.php/detailsUpload/';
 
@@ -23,9 +25,12 @@ export class DepotComponent implements OnInit {
     this.hasAnotherDropZoneOver = e;
   }
 
-  constructor(public agence: AgenceService) { }
+  constructor(public agence: AgenceService,public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
   }
 
   affiche() {

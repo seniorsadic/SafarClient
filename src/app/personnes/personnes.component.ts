@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {ContactsService} from '../../services/contacts.service';
 import {Router} from "@angular/router";
 import {Personne} from "../../model/model.personne";
+import {LoginService} from "../../services/login.service";
 
 
 @Component({
@@ -18,10 +19,12 @@ page: Number= 0 ;
 size: Number= 5 ;
 pages: any;
   settings:any ;
-  constructor( public http: Http, public contactservice: ContactsService, public router:Router) { }
+  constructor( public http: Http, public contactservice: ContactsService, public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
-
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.doSearch();
     this.settings={
       mode: 'external',
@@ -69,7 +72,7 @@ pages: any;
       },
       pager: {
         display: true,
-        perPage: 3
+        perPage: 10
       },
     };
   }

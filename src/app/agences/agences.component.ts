@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {Agence} from "../../model/model.agence";
 import {VilleService} from "../../services/ville.service";
 import { Teste} from "../../model/model.test";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-agences',
@@ -22,9 +23,12 @@ export class AgencesComponent implements OnInit {
   settings:any ;
 
   constructor(public http: Http, public agenceservice: AgenceService,
-              public vileservice: VilleService,public router:Router) { }
+              public vileservice: VilleService,public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.tester=[];
     this.doSearch();
     this.settings={

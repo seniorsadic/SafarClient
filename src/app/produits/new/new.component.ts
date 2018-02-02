@@ -4,6 +4,7 @@ import {ProduitService} from "../../../services/produit.service";
 
 
 import {Router} from "@angular/router";
+import {LoginService} from "../../../services/login.service";
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
@@ -14,9 +15,12 @@ export class NewComponent implements OnInit {
   produit: Produit=new Produit();
   pageAgence:any;
   pageCategorie:any;
-  constructor(public produitService:ProduitService,public router:Router) { }
+  constructor(public produitService:ProduitService,public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.getAgences();
     this.getCategorie();
   }

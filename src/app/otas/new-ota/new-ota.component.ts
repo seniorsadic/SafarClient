@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Ota} from "../../../model/model.ota";
 import {OtaService} from "../../../services/ota.service";
 import {Router} from "@angular/router";
+import {LoginService} from "../../../services/login.service";
 @Component({
   selector: 'app-new-ota',
   templateUrl: './new-ota.component.html',
@@ -11,9 +12,12 @@ export class NewOtaComponent implements OnInit {
   mode:number=1;
   ota: Ota=new Ota();
 
-  constructor(public otaService:OtaService,public router:Router) { }
+  constructor(public otaService:OtaService,public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
   }
   saveOta(){
     this.otaService.saveOta(this.ota)

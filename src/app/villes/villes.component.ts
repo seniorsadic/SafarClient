@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
 import {VilleService} from "../../services/ville.service";
 import {Ville} from "../../model/model.ville";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-villes',
@@ -18,9 +19,12 @@ export class VillesComponent implements OnInit {
 
 
 
-  constructor(public http: Http, public villeservice: VilleService, public router:Router) { }
+  constructor(public http: Http, public villeservice: VilleService, public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.doSearch();
     this.settings={
       mode: 'external',

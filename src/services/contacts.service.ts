@@ -2,6 +2,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Personne} from "../model/model.personne";
+import {RoleUtilisateur} from "../model/model.roleutilisateur";
 
 @Injectable()
 export class ContactsService {
@@ -19,6 +20,16 @@ getContacts( motCle: String, page: Number, size: Number) {
 
   getAgences() {
     return this.http.get("http://localhost/Safar18/web/app_dev.php/agences")
+      .map(resp => resp.json());
+  }
+
+  getRoles() {
+    return this.http.get("http://localhost/Safar18/web/app_dev.php/roles")
+      .map(resp => resp.json());
+  }
+
+  UserRoles(idrole:RoleUtilisateur) {
+    return this.http.post("http://localhost/Safar18/web/app_dev.php/userrole/",idrole)
       .map(resp => resp.json());
   }
 

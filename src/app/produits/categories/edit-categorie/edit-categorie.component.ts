@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Categorie} from "../../../../model/model.categorie";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProduitService} from "../../../../services/produit.service";
+import {LoginService} from "../../../../services/login.service";
 @Component({
   selector: 'app-edit-categorie',
   templateUrl: './edit-categorie.component.html',
@@ -11,11 +12,14 @@ export class EditCategorieComponent implements OnInit {
   categorie:Categorie=new Categorie();
   mode:number=1;
  idCategorie:number;
-  constructor(public activatedRoute:ActivatedRoute, public produitService:ProduitService, public router:Router) {
+  constructor(public activatedRoute:ActivatedRoute, public produitService:ProduitService, public router:Router, public loginService:LoginService) {
     this.idCategorie=activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.produitService.getCategorie(this.idCategorie)
       .subscribe(data=>{
           this.categorie=data},

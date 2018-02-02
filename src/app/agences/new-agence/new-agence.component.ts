@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Agence} from "../../../model/model.agence";
 import {AgenceService} from "../../../services/agence.service";
 import {Router} from "@angular/router";
+import {LoginService} from "../../../services/login.service";
 
 
 @Component({
@@ -14,9 +15,12 @@ export class NewAgenceComponent implements OnInit {
   agence: Agence=new Agence();
   pageVille:any;
 
-  constructor(public agenceService:AgenceService,public router:Router) { }
+  constructor(public agenceService:AgenceService,public router:Router, public loginService:LoginService) { }
 
   ngOnInit() {
+    if (this.loginService.getConnect()!='true'){
+      this.router.navigate(['/about']);
+    }
     this.getVilles();
   }
 
