@@ -54,7 +54,7 @@ export class OtasComponent implements OnInit {
       },
       pager: {
         display: true,
-        perPage: 3
+        perPage: 10
       },
     };
   }
